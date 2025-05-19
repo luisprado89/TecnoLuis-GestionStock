@@ -24,3 +24,7 @@ hs_err_pid*
 replay_pid*
 /TecnoLuisApp/nbproject/private/
 /build/
+
+# Excepción para incluir los .jar en la carpeta librerias/
+!librerias/
+!librerias/*.jar
