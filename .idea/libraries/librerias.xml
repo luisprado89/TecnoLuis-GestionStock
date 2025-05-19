@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="librerias">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/librerias/mysql-connector-j-9.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/swingx-all-1.6.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/commons-collections4-4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/commons-compress-1.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/poi-5.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/poi-ooxml-full-5.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/xmlbeans-5.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/poi-ooxml-5.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/commons-io-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/log4j-core-2.18.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/log4j-api-2.18.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/itextpdf-5.5.13.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/jcommon-1.0.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/jfreechart-1.0.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/jcalendar-1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

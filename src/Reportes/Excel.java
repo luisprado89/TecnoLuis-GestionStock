@@ -1,0 +1,142 @@
+package Reportes;
+
+import java.awt.Desktop;
+import java.io.*;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import Modelo.Conexion;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.util.IOUtils;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class Excel {
+    public static void reporte() {
+
+        Workbook book = new XSSFWorkbook();
+        Sheet sheet = book.createSheet("Productos");
+
+        try {
+            InputStream is = Excel.class.getResourceAsStream("/Img/logo.png");
+            byte[] bytes = IOUtils.toByteArray(is);
+            int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
+            is.close();
+
+            CreationHelper help = book.getCreationHelper();
+            Drawing draw = sheet.createDrawingPatriarch();
+            ClientAnchor anchor = help.createClientAnchor();
+            //
+            // Ajustar fila y alto
+            Row filaLogo = sheet.createRow(1);
+            filaLogo.setHeightInPoints(100); // Altura para visualizar el logo bien
+            filaLogo.createCell(0).setCellValue(" "); // Evita que la fila esté vacía
+            // Columna A y Fila 1
+            anchor.setCol1(0); // Columna A
+            anchor.setRow1(1); // Fila 1
+            Picture pict = draw.createPicture(anchor, imgIndex);
+            pict.resize(3, 3); // Ancho x Alto (en columnas y filas aprox.)
+
+            // Título
+            CellStyle tituloEstilo = book.createCellStyle();
+            tituloEstilo.setAlignment(HorizontalAlignment.CENTER);
+            tituloEstilo.setVerticalAlignment(VerticalAlignment.CENTER);
+            Font fuenteTitulo = book.createFont();
+            fuenteTitulo.setFontName("Arial");
+            fuenteTitulo.setBold(true);
+            fuenteTitulo.setFontHeightInPoints((short) 14);
+            tituloEstilo.setFont(fuenteTitulo);
+
+            Row filaTitulo = sheet.createRow(1);
+            Cell celdaTitulo = filaTitulo.createCell(1);
+            celdaTitulo.setCellStyle(tituloEstilo);
+            celdaTitulo.setCellValue("Reporte de Productos");
+            sheet.addMergedRegion(new CellRangeAddress(1, 2, 1, 4));
+
+            // Encabezados
+            String[] cabecera = {"Código", "Nombre", "Descripción", "Proveedor", "Existencia", "Precio"};
+
+            CellStyle headerStyle = book.createCellStyle();
+            headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
+            headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+            headerStyle.setBorderBottom(BorderStyle.THIN);
+            headerStyle.setBorderLeft(BorderStyle.THIN);
+            headerStyle.setBorderRight(BorderStyle.THIN);
+
+            Font font = book.createFont();
+            font.setFontName("Arial");
+            font.setBold(true);
+            font.setColor(IndexedColors.WHITE.getIndex());
+            font.setFontHeightInPoints((short) 12);
+            headerStyle.setFont(font);
+
+            Row filaEncabezados = sheet.createRow(4);
+            for (int i = 0; i < cabecera.length; i++) {
+                Cell celda = filaEncabezados.createCell(i);
+                celda.setCellStyle(headerStyle);
+                celda.setCellValue(cabecera[i]);
+            }
+
+            // Datos
+            Conexion con = new Conexion();
+            PreparedStatement ps;
+            ResultSet rs;
+            Connection conn = con.getConnection();
+
+            String sql = """
+                SELECT p.codigo, p.nombre, p.descripcion, pr.nombre AS proveedor, p.stock, p.precio
+                FROM productos p
+                JOIN proveedor pr ON p.proveedor_id = pr.id
+            """;
+
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            CellStyle datosEstilo = book.createCellStyle();
+            datosEstilo.setBorderBottom(BorderStyle.THIN);
+            datosEstilo.setBorderLeft(BorderStyle.THIN);
+            datosEstilo.setBorderRight(BorderStyle.THIN);
+
+            int numFilaDatos = 5;
+            while (rs.next()) {
+                Row filaDatos = sheet.createRow(numFilaDatos);
+                for (int i = 0; i < cabecera.length; i++) {
+                    Cell celda = filaDatos.createCell(i);
+                    celda.setCellStyle(datosEstilo);
+                    celda.setCellValue(rs.getString(i + 1));
+                }
+                numFilaDatos++;
+            }
+
+            // Ajustar ancho columnas
+            for (int i = 0; i < cabecera.length; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
+            sheet.setZoom(150);
+            //Crea el cormato fecha y hora para el nombre del archivo
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+            String fechaHora = LocalDateTime.now().format(formatter);
+
+            //
+            String fileName = "productos_" + fechaHora;
+            String home = System.getProperty("user.home");
+            File file = new File(home + "/Downloads/" + fileName + ".xlsx");
+
+            FileOutputStream fileOut = new FileOutputStream(file);
+            book.write(fileOut);
+            fileOut.close();
+            Desktop.getDesktop().open(file);
+            JOptionPane.showMessageDialog(null, "Reporte Generado");
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Logo no encontrado. Verifica la ruta: src/Img/logo.png");
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
