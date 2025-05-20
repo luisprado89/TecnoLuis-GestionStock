@@ -1,4 +1,4 @@
-# Compiled class file
+# Compiled class file Archivos de compilación Java
 *.class
 
 # Log file
@@ -7,10 +7,10 @@
 # BlueJ files
 *.ctxt
 
-# Mobile Tools for Java (J2ME)
+# Mobile Tools for Java (J2ME) Archivos temporales de J2ME
 .mtj.tmp/
 
-# Package Files #
+# Package Files Archivos empaquetados (general) #
 *.jar
 *.war
 *.nar
@@ -19,8 +19,23 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Logs de error de la JVM virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# NetBeans - configuración privada
+
 /TecnoLuisApp/nbproject/private/
+# Carpetas de compilación
 /build/
+
+# Ignorar todos los .jar excepto los de /librerias/
+!librerias/
+!librerias/*.jar
+
+
+# ❗️ No ignores archivos de configuración de IntelliJ
+# (permite compartir el proyecto completamente configurado)
+# Asegúrate de que estas líneas NO estén en tu .gitignore:
+# .idea/
+# *.iml
