@@ -1,5 +1,5 @@
 package Modelo;
-
+import Util.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,10 @@ import javax.swing.JOptionPane;
 
 public class ClienteDao {
 
-    Conexion cn = new Conexion();
-    Connection con;
-    PreparedStatement ps;
-    ResultSet rs;
+    private final Conexion cn = new Conexion();
+    private Connection con;
+    private PreparedStatement ps;
+    private ResultSet rs;
 
     public boolean RegistrarCliente(Cliente cl) {
         String sql = "INSERT INTO clientes (dni, nombre, telefono, direccion, razon_social) VALUES (?, ?, ?, ?, ?)";
@@ -28,11 +28,7 @@ public class ClienteDao {
             JOptionPane.showMessageDialog(null, e.toString());
             return false;
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println(e.toString());
-            }
+            cerrarRecursos();
         }
     }
 
@@ -56,6 +52,8 @@ public class ClienteDao {
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
+        }finally {
+            cerrarRecursos();
         }
         return lista;
     }
@@ -72,11 +70,7 @@ public class ClienteDao {
             System.out.println(e.toString());
             return false;
         } finally {
-            try {
-                con.close();
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
+            cerrarRecursos();
         }
     }
 
@@ -97,11 +91,7 @@ public class ClienteDao {
             System.out.println(e.toString());
             return false;
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println(e.toString());
-            }
+            cerrarRecursos();
         }
     }
 
@@ -124,6 +114,8 @@ public class ClienteDao {
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
+        }finally {
+            cerrarRecursos();
         }
         return cl;
     }
@@ -147,7 +139,29 @@ public class ClienteDao {
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
+        }finally {
+            cerrarRecursos();
         }
         return cl;
     }
+
+    private void cerrarRecursos() {
+        try {
+            if (rs != null) rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando ResultSet: " + e);
+        }
+        try {
+            if (ps != null) ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando PreparedStatement: " + e);
+        }
+        try {
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando Connection: " + e);
+        }
+    }
+
+
 }

@@ -1,12 +1,13 @@
 package Modelo;
 
+import Util.Conexion;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DetalleDao {
-    private Conexion cn = new Conexion();
-
+    private final Conexion cn = new Conexion();
     public boolean registrarDetalle(Detalle detalle) {
         String sql = "INSERT INTO detalle (id_producto, cantidad, precio, id_venta) VALUES (?, ?, ?, ?)";
         try (Connection con = cn.getConnection();

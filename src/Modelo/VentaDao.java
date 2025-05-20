@@ -1,14 +1,17 @@
 package Modelo;
 
+import Util.Conexion;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class VentaDao {
+    private final Conexion cn = new Conexion();
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
-    private final Conexion cn = new Conexion();
+
 
     // Método para registrar una nueva venta
     public int registrarVenta(Venta venta) {
@@ -54,12 +57,26 @@ public class VentaDao {
         } catch (SQLException e) {
             System.out.println("Error al listar ventas: " + e);
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar conexión: " + e);
-            }
+            cerrarRecursos();
         }
         return lista;
+    }
+
+    private void cerrarRecursos() {
+        try {
+            if (rs != null) rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando ResultSet: " + e);
+        }
+        try {
+            if (ps != null) ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando PreparedStatement: " + e);
+        }
+        try {
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando Connection: " + e);
+        }
     }
 }

@@ -1,15 +1,18 @@
 package Modelo;
 
+import Util.Conexion;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDao {
-    Conexion cn = new Conexion();
-    Connection con;
-    PreparedStatement ps;
-    ResultSet rs;
+    private final Conexion cn = new Conexion();
+    private Connection con;
+    private PreparedStatement ps;
+    private ResultSet rs;
+
 
     public Usuario login(String correo, String pass) {
         Usuario usuario = null;
@@ -31,8 +34,27 @@ public class LoginDao {
         } catch (SQLException e) {
             System.out.println("❌ Error al validar login: " + e.getMessage());
         } finally {
-            try { if (con != null) con.close(); } catch (SQLException e) { }
+            cerrarRecursos();
         }
         return usuario;
+    }
+
+
+    private void cerrarRecursos() {
+        try {
+            if (rs != null) rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando ResultSet: " + e);
+        }
+        try {
+            if (ps != null) ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando PreparedStatement: " + e);
+        }
+        try {
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando Connection: " + e);
+        }
     }
 }

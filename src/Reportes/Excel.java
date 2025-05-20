@@ -8,37 +8,41 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import Modelo.Conexion;
+
+import Util.Conexion;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Excel {
-    public static void reporte() {
 
+    public static void reporte() {
         Workbook book = new XSSFWorkbook();
         Sheet sheet = book.createSheet("Productos");
 
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         try {
+            // Logo
             InputStream is = Excel.class.getResourceAsStream("/Img/logo.png");
             byte[] bytes = IOUtils.toByteArray(is);
             int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
             is.close();
 
             CreationHelper help = book.getCreationHelper();
-            Drawing draw = sheet.createDrawingPatriarch();
+            Drawing<?> draw = sheet.createDrawingPatriarch();
             ClientAnchor anchor = help.createClientAnchor();
-            //
-            // Ajustar fila y alto
+
             Row filaLogo = sheet.createRow(1);
-            filaLogo.setHeightInPoints(100); // Altura para visualizar el logo bien
-            filaLogo.createCell(0).setCellValue(" "); // Evita que la fila esté vacía
-            // Columna A y Fila 1
-            anchor.setCol1(0); // Columna A
-            anchor.setRow1(1); // Fila 1
+            filaLogo.setHeightInPoints(100);
+            filaLogo.createCell(0).setCellValue(" ");
+            anchor.setCol1(0);
+            anchor.setRow1(1);
             Picture pict = draw.createPicture(anchor, imgIndex);
-            pict.resize(3, 3); // Ancho x Alto (en columnas y filas aprox.)
+            pict.resize(3, 3);
 
             // Título
             CellStyle tituloEstilo = book.createCellStyle();
@@ -81,10 +85,8 @@ public class Excel {
             }
 
             // Datos
-            Conexion con = new Conexion();
-            PreparedStatement ps;
-            ResultSet rs;
-            Connection conn = con.getConnection();
+            Conexion cn = new Conexion();
+            con = cn.getConnection();
 
             String sql = """
                 SELECT p.codigo, p.nombre, p.descripcion, pr.nombre AS proveedor, p.stock, p.precio
@@ -92,7 +94,7 @@ public class Excel {
                 JOIN proveedor pr ON p.proveedor_id = pr.id
             """;
 
-            ps = conn.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
             CellStyle datosEstilo = book.createCellStyle();
@@ -111,24 +113,23 @@ public class Excel {
                 numFilaDatos++;
             }
 
-            // Ajustar ancho columnas
             for (int i = 0; i < cabecera.length; i++) {
                 sheet.autoSizeColumn(i);
             }
 
             sheet.setZoom(150);
-            //Crea el cormato fecha y hora para el nombre del archivo
+
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
             String fechaHora = LocalDateTime.now().format(formatter);
 
-            //
             String fileName = "productos_" + fechaHora;
             String home = System.getProperty("user.home");
             File file = new File(home + "/Downloads/" + fileName + ".xlsx");
 
-            FileOutputStream fileOut = new FileOutputStream(file);
-            book.write(fileOut);
-            fileOut.close();
+            try (FileOutputStream fileOut = new FileOutputStream(file)) {
+                book.write(fileOut);
+            }
+
             Desktop.getDesktop().open(file);
             JOptionPane.showMessageDialog(null, "Reporte Generado");
 
@@ -137,6 +138,22 @@ public class Excel {
             JOptionPane.showMessageDialog(null, "Logo no encontrado. Verifica la ruta: src/Img/logo.png");
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Excel.class.getName()).log(Level.WARNING, "Error al cerrar ResultSet", ex);
+            }
+            try {
+                if (ps != null) ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Excel.class.getName()).log(Level.WARNING, "Error al cerrar PreparedStatement", ex);
+            }
+            try {
+                if (con != null) con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Excel.class.getName()).log(Level.WARNING, "Error al cerrar Connection", ex);
+            }
         }
     }
 }

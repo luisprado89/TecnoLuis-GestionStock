@@ -5,7 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import Util.Connexion;
+
+import Util.Conexion;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -14,12 +15,12 @@ import javax.swing.JFrame;
 
 public class Grafico {
     private JFreeChart chart;
-
+    private final Conexion cn = new Conexion();
+    private Connection con;
+    private PreparedStatement ps;
+    private ResultSet rs;
     public boolean generarGrafico(String fecha) {
-        Connexion cn = new Connexion();
-        Connection con = cn.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+        con = cn.getConnection();
         boolean hayDatos = false;
 
         try {

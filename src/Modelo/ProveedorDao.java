@@ -1,5 +1,7 @@
 package Modelo;
 
+import Util.Conexion;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProveedorDao {
+    private final Conexion cn = new Conexion();
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
-    private Conexion cn = new Conexion();
 
     public boolean RegistrarProveedor(Proveedor p) {
         String sql = "INSERT INTO proveedor (dni, nombre, telefono, direccion, razon_social) VALUES (?, ?, ?, ?, ?)";
@@ -30,11 +32,7 @@ public class ProveedorDao {
             System.out.println(e.toString());
             return false;
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println(e.toString());
-            }
+            cerrarRecursos();
         }
     }
 
@@ -58,11 +56,7 @@ public class ProveedorDao {
         } catch (SQLException e) {
             System.out.println(e.toString());
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println(e.toString());
-            }
+            cerrarRecursos();
         }
         return lista;
     }
@@ -79,11 +73,7 @@ public class ProveedorDao {
             System.out.println(e.toString());
             return false;
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println(e.toString());
-            }
+            cerrarRecursos();
         }
     }
 
@@ -104,11 +94,7 @@ public class ProveedorDao {
             System.out.println(e.toString());
             return false;
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println(e.toString());
-            }
+            cerrarRecursos();
         }
     }
 
@@ -147,4 +133,21 @@ public class ProveedorDao {
         return -1; // ID no encontrado
     }
 
+    private void cerrarRecursos() {
+        try {
+            if (rs != null) rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando ResultSet: " + e);
+        }
+        try {
+            if (ps != null) ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando PreparedStatement: " + e);
+        }
+        try {
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando Connection: " + e);
+        }
+    }
 }

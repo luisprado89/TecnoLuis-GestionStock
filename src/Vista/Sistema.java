@@ -4,6 +4,7 @@ import Modelo.*;
 import Reportes.Excel;
 import Reportes.Grafico;
 import Reportes.PDF;
+import Util.Conexion;
 import Util.UtilImagenes;
 
 import javax.swing.*;
@@ -30,8 +31,11 @@ public class Sistema extends javax.swing.JFrame {
     //Datos del usuario que inicio sesión
     private String usuarioNombre;
     private String usuarioRol;
-
-
+    //Conexion a la base de datos
+    private final Conexion cn = new Conexion();
+    private Connection con;
+    private PreparedStatement ps;
+    private ResultSet rs;
     /**
      * Creates new form Sistema
      */
@@ -1963,14 +1967,17 @@ public class Sistema extends javax.swing.JFrame {
                 return;
             }
 
+            Connection con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
             try {
                 int cantidad = Integer.parseInt(cantidadTexto);
 
-                Connection conn = new Conexion().getConnection();
+                con = cn.getConnection();
                 String sql = "SELECT p.codigo, p.nombre, p.descripcion, p.precio, p.stock FROM productos p WHERE p.codigo = ?";
-                PreparedStatement ps = conn.prepareStatement(sql);
+                ps = con.prepareStatement(sql);
                 ps.setString(1, codigo);
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 if (rs.next()) {
                     String nombre = rs.getString("nombre");
@@ -2022,12 +2029,28 @@ public class Sistema extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Producto no encontrado.");
                 }
 
-                conn.close();
+                con.close();
 
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "La cantidad debe ser un número entero.");
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(this, "Error al buscar producto: " + e.getMessage());
+            } finally {
+                try {
+                    if (rs != null) rs.close();
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar ResultSet: " + ex.getMessage());
+                }
+                try {
+                    if (ps != null) ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar PreparedStatement: " + ex.getMessage());
+                }
+                try {
+                    if (con != null) con.close();
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar Connection: " + ex.getMessage());
+                }
             }
         }
     }//GEN-LAST:event_txtCantidadVentaKeyPressed
@@ -2066,13 +2089,15 @@ public class Sistema extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Ingrese un DNI.");
                 return;
             }
-
+            Connection con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
             try {
-                Connection conn = new Conexion().getConnection();
+                con = cn.getConnection();
                 String sql = "SELECT * FROM clientes WHERE dni = ?";
-                PreparedStatement ps = conn.prepareStatement(sql);
+                ps = con.prepareStatement(sql);
                 ps.setString(1, dni);
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 if (rs.next()) {
                     // Mostrar los datos en los campos correspondientes
@@ -2092,10 +2117,26 @@ public class Sistema extends javax.swing.JFrame {
                 }
                 txtDniClienteVenta.requestFocus();// Mueve el foco al campo de dni
 
-                conn.close();
+                con.close();
 
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(this, "Error al buscar cliente: " + e.getMessage());
+            } finally {
+                try {
+                    if (rs != null) rs.close();
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar ResultSet: " + ex.getMessage());
+                }
+                try {
+                    if (ps != null) ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar PreparedStatement: " + ex.getMessage());
+                }
+                try {
+                    if (con != null) con.close();
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar Connection: " + ex.getMessage());
+                }
             }
         }
     }//GEN-LAST:event_txtDniClienteVentaKeyPressed

@@ -1,14 +1,16 @@
 package Modelo;
 
+import Util.Conexion;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDao {
-    Conexion cn = new Conexion();
-    Connection con;
-    PreparedStatement ps;
-    ResultSet rs;
+    private final Conexion cn = new Conexion();
+    private Connection con;
+    private PreparedStatement ps;
+    private ResultSet rs;
 
     // REGISTRAR USUARIO
     public boolean RegistrarUsuario(Usuario u) {
@@ -25,7 +27,7 @@ public class UsuarioDao {
             System.out.println(" Error al registrar usuario: " + e.getMessage());
             return false;
         } finally {
-            try { if (ps != null) ps.close(); if (con != null) con.close(); } catch (SQLException ex) {}
+            cerrarRecursos();
         }
     }
 
@@ -49,7 +51,7 @@ public class UsuarioDao {
         } catch (SQLException e) {
             System.out.println(" Error al listar usuarios: " + e.getMessage());
         } finally {
-            try { if (rs != null) rs.close(); if (ps != null) ps.close(); if (con != null) con.close(); } catch (SQLException ex) {}
+            cerrarRecursos();
         }
         return lista;
     }
@@ -66,7 +68,7 @@ public class UsuarioDao {
             System.out.println(" Error al eliminar usuario: " + e.getMessage());
             return false;
         } finally {
-            try { if (ps != null) ps.close(); if (con != null) con.close(); } catch (SQLException ex) {}
+            cerrarRecursos();
         }
     }
 
@@ -86,7 +88,25 @@ public class UsuarioDao {
             System.out.println(" Error al modificar usuario: " + e.getMessage());
             return false;
         } finally {
-            try { if (ps != null) ps.close(); if (con != null) con.close(); } catch (SQLException ex) {}
+            cerrarRecursos();
+        }
+    }
+
+    private void cerrarRecursos() {
+        try {
+            if (rs != null) rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando ResultSet: " + e);
+        }
+        try {
+            if (ps != null) ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando PreparedStatement: " + e);
+        }
+        try {
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando Connection: " + e);
         }
     }
 }

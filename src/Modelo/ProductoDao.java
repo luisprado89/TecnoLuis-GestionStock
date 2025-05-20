@@ -1,16 +1,17 @@
 package Modelo;
 
+import Util.Conexion;
+
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoDao {
+    private final Conexion cn = new Conexion();
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
-    private Conexion cn = new Conexion();
-
     public boolean RegistrarProducto(Producto p) {
         String sql = "INSERT INTO productos (codigo, nombre, descripcion, proveedor_id, stock, precio) VALUES (?, ?, ?, ?, ?, ?)";
         try {
@@ -28,11 +29,7 @@ public class ProductoDao {
             System.out.println("Error al registrar producto: " + e.toString());
             return false;
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar conexión: " + e.toString());
-            }
+            cerrarRecursos();
         }
     }
 
@@ -57,11 +54,7 @@ public class ProductoDao {
         } catch (SQLException e) {
             System.out.println("Error al listar productos: " + e.toString());
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar conexión: " + e.toString());
-            }
+            cerrarRecursos();
         }
         return lista;
     }
@@ -78,11 +71,7 @@ public class ProductoDao {
             System.out.println("Error al eliminar producto: " + e.toString());
             return false;
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar conexión: " + e.toString());
-            }
+            cerrarRecursos();
         }
     }
 
@@ -104,11 +93,7 @@ public class ProductoDao {
             System.out.println("Error al modificar producto: " + e.toString());
             return false;
         } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar conexión: " + e.toString());
-            }
+            cerrarRecursos();
         }
     }
 
@@ -132,7 +117,9 @@ public class ProductoDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        } finally {
+        cerrarRecursos();
+    }
 
         return producto;
     }
@@ -148,6 +135,8 @@ public class ProductoDao {
             }
         } catch (SQLException e) {
             System.out.println("Error al obtener ID del producto: " + e.toString());
+        } finally {
+            cerrarRecursos();
         }
         return -1;
     }
@@ -162,7 +151,25 @@ public class ProductoDao {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        } finally {
+        cerrarRecursos();
+    }
+    }
+    private void cerrarRecursos() {
+        try {
+            if (rs != null) rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando ResultSet: " + e);
+        }
+        try {
+            if (ps != null) ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando PreparedStatement: " + e);
+        }
+        try {
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error cerrando Connection: " + e);
         }
     }
-
 }
