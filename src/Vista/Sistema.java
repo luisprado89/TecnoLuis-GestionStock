@@ -57,7 +57,7 @@ public class Sistema extends javax.swing.JFrame {
         txtRazonClienteVenta.setVisible(false); //
 
 
-
+        configurarEventos();  // Este evento se encarga de la configuración de eventos para las tablas en este momento lo usamos para cuando se haga click en la pestaña "Ventas" llame al boton que carga la lista 
 
 
 
@@ -369,6 +369,8 @@ public class Sistema extends javax.swing.JFrame {
         jLabelCabecera.setText("Punto de Venta");
         getContentPane().add(jLabelCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 600, 90));
 
+        jTabbedPane1.setBackground(new java.awt.Color(88, 188, 103));
+        jTabbedPane1.setBorder(new javax.swing.border.MatteBorder(null));
         jTabbedPane1.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -666,7 +668,7 @@ public class Sistema extends javax.swing.JFrame {
                             .addComponent(btnNuevoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(68, 68, 68)))
                 .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
                     .addGroup(panelClientesLayout.createSequentialGroup()
                         .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -822,7 +824,7 @@ public class Sistema extends javax.swing.JFrame {
                     .addGroup(panelProveedoresLayout.createSequentialGroup()
                         .addComponent(txtIDProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelProveedoresLayout.setVerticalGroup(
@@ -856,7 +858,7 @@ public class Sistema extends javax.swing.JFrame {
                 .addGroup(panelProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnNuevoProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProveedoresLayout.createSequentialGroup()
                 .addComponent(txtIDProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1004,7 +1006,7 @@ public class Sistema extends javax.swing.JFrame {
                     .addGroup(panelProductosLayout.createSequentialGroup()
                         .addComponent(txtIDProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelProductosLayout.setVerticalGroup(
@@ -1012,7 +1014,7 @@ public class Sistema extends javax.swing.JFrame {
             .addGroup(panelProductosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtIDProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(panelProductosLayout.createSequentialGroup()
@@ -1097,7 +1099,7 @@ public class Sistema extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(txtIDVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelVentasLayout.setVerticalGroup(
@@ -1109,7 +1111,7 @@ public class Sistema extends javax.swing.JFrame {
                     .addComponent(txtIDVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab5", panelVentas);
@@ -1159,7 +1161,7 @@ public class Sistema extends javax.swing.JFrame {
                         .addGroup(panelConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombreEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                         .addGroup(panelConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTelefonoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1207,7 +1209,7 @@ public class Sistema extends javax.swing.JFrame {
                         .addComponent(txtRazonEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(66, 66, 66)
                 .addComponent(btnActualizarEmpresa)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab6", panelConfiguracion);
@@ -1296,7 +1298,7 @@ public class Sistema extends javax.swing.JFrame {
                                 .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelUsuariosLayout.createSequentialGroup()
                                 .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtCorreoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(26, 26, 26))
                     .addGroup(panelUsuariosLayout.createSequentialGroup()
@@ -1310,12 +1312,12 @@ public class Sistema extends javax.swing.JFrame {
                                 .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtContrasenaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbxRolUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelUsuariosLayout.createSequentialGroup()
                         .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelUsuariosLayout.setVerticalGroup(
@@ -1323,7 +1325,7 @@ public class Sistema extends javax.swing.JFrame {
             .addGroup(panelUsuariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(panelUsuariosLayout.createSequentialGroup()
@@ -1362,11 +1364,11 @@ public class Sistema extends javax.swing.JFrame {
                 btnGraficalActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGrafical, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 110, -1, -1));
-        getContentPane().add(miDateJCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(896, 120, 250, -1));
+        getContentPane().add(btnGrafical, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 90, -1, -1));
+        getContentPane().add(miDateJCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 100, 250, -1));
 
         jLabel31.setText("Seleccionar:");
-        getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 90, -1, -1));
+        getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 70, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2248,6 +2250,25 @@ public class Sistema extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnActualizarEmpresaActionPerformed
 
+    //Boton para controlar eventos
+    private void configurarEventos() {
+
+        //Controla que cuando se haga click en el panel de ventas, se llame al método listar ventas
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                if (jTabbedPane1.getSelectedComponent() == panelVentas) {
+                    btnListarVentasActionPerformed(null);
+                }
+            }
+        });
+    }
+
+
+
+
+
+
+    // Botón para listar ventas en la tabla y abrir el panel correspondiente
     private void btnListarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarVentasActionPerformed
         // Botón para listar ventas
         jTabbedPane1.setSelectedIndex(4);
