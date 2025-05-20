@@ -5,6 +5,7 @@ import Modelo.Usuario;
 import Util.UtilImagenes;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -22,8 +23,14 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        jProgressBar1Login.setVisible(false);
-        jProgressBar1Login.setStringPainted(true); // Muestra el porcentaje
+
+
+        jProgressBar1Login.setForeground(new Color(0x58BC67)); // Verde #58BC67
+        jProgressBar1Login.setStringPainted(true);             // Mostrar el texto del progreso
+        jProgressBar1Login.setVisible(false);                  // Oculto hasta que inicie
+
+
+
         // ✅ Redimensionar automáticamente la imagen que ya se asignó en el diseñador
         SwingUtilities.invokeLater(() -> {
             ImageIcon iconoOriginal = (ImageIcon) jLabelLogoInicio.getIcon();
@@ -61,6 +68,7 @@ public class Login extends javax.swing.JFrame {
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio de Sesión - TecnoLuis GestiónStock");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -101,6 +109,8 @@ public class Login extends javax.swing.JFrame {
                 btnAccederActionPerformed(evt);
             }
         });
+
+        jProgressBar1Login.setBackground(new java.awt.Color(88, 188, 103));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

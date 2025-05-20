@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Primeros Pasos - Gu&#xed;a R&#xe1;pida de Uso"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="560" max="-2" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="496" max="-2" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;     &lt;div style=&apos;text-align: center; font-family: Segoe UI, sans-serif;&apos;&gt;         &lt;h2&gt;Primeros Pasos&lt;/h2&gt;         &lt;p&gt;             Bienvenido al sistema de gesti&#xf3;n empresarial &lt;strong&gt;TecnoLuis-GestionStock&lt;/strong&gt;.         &lt;/p&gt;         &lt;p&gt;             Esta aplicaci&#xf3;n te permite llevar el control de &lt;strong&gt;ventas, productos, clientes, proveedores&lt;/strong&gt; y m&#xe1;s.         &lt;/p&gt;         &lt;p&gt;             Para comenzar:             &lt;ul style=&apos;text-align: left; display: inline-block;&apos;&gt;                 &lt;li&gt;Inicia sesi&#xf3;n con tus credenciales (correo y contrase&#xf1;a).&lt;/li&gt;                 &lt;li&gt;Accede al men&#xfa; lateral para navegar entre las secciones.&lt;/li&gt;                 &lt;li&gt;En &lt;strong&gt;&#x201c;Nueva Venta&#x201d;&lt;/strong&gt; podr&#xe1;s registrar operaciones comerciales.&lt;/li&gt;                 &lt;li&gt;En &lt;strong&gt;&#x201c;Productos&#x201d;&lt;/strong&gt; administra tu inventario y stock disponible.&lt;/li&gt;                 &lt;li&gt;Usa &lt;strong&gt;&#x201c;Configuraci&#xf3;n&#x201d;&lt;/strong&gt; para editar los datos de la empresa.&lt;/li&gt;             &lt;/ul&gt;         &lt;/p&gt;         &lt;p&gt;             Explora cada m&#xf3;dulo paso a paso y si necesitas ayuda detallada,&lt;br&gt;             accede a la secci&#xf3;n &lt;strong&gt;&#x201c;Manual de Usuario&#x201d;&lt;/strong&gt; desde el men&#xfa; de Ayuda.         &lt;/p&gt;     &lt;/div&gt; &lt;/html&gt; "/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

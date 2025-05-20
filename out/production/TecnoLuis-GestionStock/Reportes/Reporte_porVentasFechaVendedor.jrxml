@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="01817b7a-5384-4c9f-9698-59b0d28dd708">
+	<property name="ireport.zoom" value="0.620921323059156"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+  CONCAT('VENTA ', v.id, ' - ', DATE_FORMAT(v.fecha, '%Y-%m-%d %H:%i'), ' - ', v.vendedor) AS etiqueta,
+  v.total
+FROM ventas v
+ORDER BY v.fecha;]]>
+	</queryString>
+	<field name="etiqueta" class="java.lang.String"/>
+	<field name="total" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="8" width="441" height="20" uuid="7459850e-35da-4b86-a89b-076e04172d33"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE VENTAS POR TRANSACCIÓN CON FECHA Y VENDEDOR]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="44" width="304" height="1" uuid="20f46a8d-953d-4f51-bb71-36c28139d858"/>
+			</line>
+			<image>
+				<reportElement x="459" y="0" width="57" height="44" uuid="c1a7e8db-1b1d-4077-b76a-1f39c3583d45"/>
+				<imageExpression><![CDATA["C:\\Users\\LUIS\\Documents\\GitHub\\TecnoLuis-GestionStock\\src\\Img\\LogoTL.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="2" width="22" height="20" uuid="196d2026-977c-4bf0-a740-f9008f8b033a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="2" width="79" height="20" uuid="f0d99bfb-c339-4e70-9a94-b26542cdd46a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA - HORA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="2" width="56" height="20" uuid="446516ed-fd18-402b-ba9e-11a71e3d2ce3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VENDEDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="2" width="40" height="20" uuid="4ed44f15-6119-4aa8-b3cf-4c263515ada3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="21" width="304" height="1" uuid="831ea56c-1204-483f-aa84-2f3c1c9b4a9b"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="204" height="20" uuid="20ae5c79-b99c-413f-bbf1-a42069968c68"/>
+				<textFieldExpression><![CDATA[$F{etiqueta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="0" width="100" height="20" uuid="baf6678d-964c-44d4-91b9-f22635301bc7"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="19" width="304" height="1" uuid="47877506-ddcb-42cb-9fe3-e6623bd5b89d"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="476" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="0" y="0" width="555" height="435" uuid="47d6c6e1-3ccb-4497-b98c-ea820bca178a"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{etiqueta}
+]]></keyExpression>
+					<valueExpression><![CDATA[$F{total}
+]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</pageFooter>
+</jasperReport>
