@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manual de Usuario &ndash; TecnoLuis Gesti&oacute;nStock</title>
+</head>
+<body>
+<h1 style='margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:32px;font-weight: bold;'>Manual de Usuario &ndash; TecnoLuis Gesti&oacute;nStock</h1>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Autora:</strong> Luis Darwin Prado Cisneros<br><strong style="font-weight: bold;">Fecha:</strong> Mayo 2025</p>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>&Iacute;ndice</h2>
+<ol>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Introducci&oacute;n</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Requisitos del sistema</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Inicio de la aplicaci&oacute;n</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Men&uacute; principal lateral: Funciones principales<br>&nbsp;&emsp;4.1 Nueva Venta<br>&nbsp;&emsp;4.2 Usuarios<br>&nbsp;&emsp;4.3 Clientes<br>&nbsp;&emsp;4.4 Proveedores<br>&nbsp;&emsp;4.5 Productos<br>&nbsp;&emsp;4.6 Ventas<br>&nbsp;&emsp;4.7 Configuraci&oacute;n<br>&nbsp;&emsp;4.8 Funcionalidades adicionales</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Durante el uso del sistema</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Reportes y exportaci&oacute;n</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Seguridad y sesi&oacute;n</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Ayuda y Cr&eacute;ditos</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Reportes personalizados con JasperReports</p>
+    </li>
+</ol>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>1. Introducci&oacute;n</h2>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Bienvenido al sistema <strong style="font-weight: bold;">TecnoLuis Gesti&oacute;nStock</strong>. Esta aplicaci&oacute;n ha sido desarrollada en Java con una interfaz gr&aacute;fica amigable, dise&ntilde;ada para facilitar la gesti&oacute;n de ventas, inventario, usuarios, clientes y proveedores.</p>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>2. Requisitos del sistema</h2>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Sistema operativo:</strong> Windows, macOS o Linux</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Java JDK instalado:</strong> Versi&oacute;n 17 o superior</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Resoluci&oacute;n m&iacute;nima:</strong> 1280x720</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Base de datos:</strong> MySQL instalada en el equipo</p>
+    </li>
+</ul>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'>2.1 Configuraci&oacute;n de la base de datos</h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El sistema se conecta a la base de datos mediante la clase <code style='font-family: "Liberation Mono", monospace;'>Conexion</code> del paquete <code style='font-family: "Liberation Mono", monospace;'>Util</code>. La configuraci&oacute;n por defecto es:</p>
+<table cellpadding="5" style="width: 52%; margin-right: calc(48%);">
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(0, 0, 0);padding: 0.1cm;vertical-align: top;">
+                <pre style='background: transparent;font-family: "Liberation Mono", monospace;font-size:13px;'>java CopiarEditar <code style='font-family: "Liberation Mono", monospace;'>URL: &quot;jdbc:mysql://localhost:3306/tecnoluisdb&quot;</code> <code style='font-family: "Liberation Mono", monospace;'>USER: &quot;root&quot;</code>
+<code style='font-family: "Liberation Mono", monospace;'>PASSWORD: &quot;abc123.&quot;</code></pre>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><br>&nbsp;</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Puede modificar estos valores en el c&oacute;digo si desea usar otros credenciales o puerto.</p>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'>2.2 Importaci&oacute;n de la base de datos</h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Dentro del paquete <code style='font-family: "Liberation Mono", monospace;'>Util</code> se encuentra el archivo <code style='font-family: "Liberation Mono", monospace;'>tecnoluisdb.sql</code>, que debe ser importado en su MySQL local usando MySQL Workbench o l&iacute;nea de comandos.</p>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>3. Inicio de la aplicaci&oacute;n</h2>
+<ol>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Ejecuta el archivo <code style='font-family: "Liberation Mono", monospace;'>Login.java</code> o <code style='font-family: "Liberation Mono", monospace;'>Login.exe</code>.</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Introduce tus credenciales. Hay dos roles disponibles:</p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Administrador:</strong> acceso completo</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Vendedor:</strong> funciones restringidas</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Se abre la ventana principal con los m&oacute;dulos laterales.</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Usa los botones o men&uacute; superior para navegar entre funciones.</p>
+    </li>
+</ol>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>4. Men&uacute; principal lateral: Funciones principales</h2>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'><span style="background: transparent;">4.1 Nueva Venta</span></h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El bot&oacute;n y a pesta&ntilde;a <strong style="font-weight: bold;">Nueva Venta</strong> abre la ventana punto de venta &ndash; nueva trasaccion pesta&ntilde;a <strong style="font-weight: bold;">Nueva Venta</strong>, la cual contiene el panel necesario para registrar una nueva venta. Este m&oacute;dulo permite introducir productos, asignar el cliente y generar el comprobante de forma autom&aacute;tica.</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><br>&nbsp;</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Permite registrar ventas. Se deben introducir productos, cantidad y el DNI del cliente. El sistema:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Verifica stock disponible</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Muestra una tabla con los productos a&ntilde;adidos</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Permite eliminar l&iacute;neas</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Genera autom&aacute;ticamente un PDF con:</p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Datos del cliente y empresa</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Productos, cantidades, totales</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Fecha e ID de venta</p>
+            </li>
+        </ul>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><br>&nbsp;</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El PDF se guarda autom&aacute;ticamente en el paquete <code style='font-family: "Liberation Mono", monospace;'>ventas</code>.<br>&nbsp;<br>&nbsp;Introducir c&oacute;digo del producto</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">En el campo &quot;C&oacute;digo&quot;, escriba el c&oacute;digo del producto. Al hacerlo, se mostrar&aacute; autom&aacute;ticamente el nombre del producto y se habilitar&aacute; el campo para introducir la <strong style="font-weight: bold;">cantidad</strong> deseada.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.1.2 Verificaci&oacute;n de stock</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El sistema mostrar&aacute; el <strong style="font-weight: bold;">precio</strong> y el <strong style="font-weight: bold;">stock disponible</strong> del producto.</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">Nota: La cantidad ingresada debe ser menor o igual al stock disponible. En caso contrario, aparecer&aacute; un mensaje de advertencia.</blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.1.3 A&ntilde;adir producto</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Una vez introducida la cantidad, presione la tecla <strong style="font-weight: bold;">Enter</strong> para a&ntilde;adir el producto a la lista de venta.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.1.4 Asignar cliente</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">En el campo inferior &quot;DNI&quot;, introduzca el DNI del cliente al que se realiza la venta. Este paso es obligatorio para continuar.</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">Nota: el dni debe aparecer en la base de datos, estar registrado En caso contrario, aparecer&aacute; un mensaje de advertencia.</blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.1.5 Lista de productos</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">A medida que se agregan productos, estos se mostrar&aacute;n en una tabla que incluye:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Nombre del producto</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Precio unitario</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Cantidad</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Total por producto</p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al final del listado aparece el <strong style="font-weight: bold;">Total general</strong> de la venta.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.1.6 Eliminar un producto</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Puede seleccionar cualquier producto de la lista y eliminarlo usando el bot&oacute;n rojo <strong style="font-weight: bold;">Eliminar</strong> ubicado en la parte superior del panel.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.1.7 Finalizar venta</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Cuando todos los productos hayan sido a&ntilde;adidos, presione el bot&oacute;n <strong style="font-weight: bold;">&quot;Registrar Venta&quot;</strong>.<br>El sistema mostrar&aacute; un mensaje confirmando que la venta fue registrada con &eacute;xito, junto con el <strong style="font-weight: bold;">ID de la venta generada</strong>.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.1.8 Factura PDF</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Tras confirmar el registro, se generar&aacute; autom&aacute;ticamente un archivo PDF con todos los detalles de la venta:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Datos del cliente</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Productos vendidos</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Cantidades y totales</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">N&uacute;mero de ID de venta</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Datos de la empresa</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Fecha de emisi&oacute;n de la venta</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Este archivo act&uacute;a como una factura y se abrir&aacute; autom&aacute;ticamente para su revisi&oacute;n o impresion en caso de querer imprimirlo.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>1.9 Almacenamiento autom&aacute;tico</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El PDF generado se guarda autom&aacute;ticamente en el paquete <code style='font-family: "Liberation Mono", monospace;'>ventas</code> del sistema, con el nombre:<br><strong style="font-weight: bold;">venta_ID_fecha.pdf</strong></p>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'><strong><span style="background: transparent;">4.2 Usuarios</span></strong></h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El bot&oacute;n y a pesta&ntilde;a <strong style="font-weight: bold;">Usuarios</strong> permite gestionar las cuentas de acceso al sistema. Esta funcionalidad est&aacute; <strong style="font-weight: bold;">restringida exclusivamente a los usuarios con rol de Administrador</strong>.</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Solo disponible para Administradores. Permite:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Registrar usuarios (nombre, correo, contrase&ntilde;a, rol)</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Actualizar datos existentes</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Eliminar usuarios</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Validaciones:</p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">&quot;Todos los campos son obligatorios&quot;</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">&quot;Selecciona un usuario para editar&quot;</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">&quot;Selecciona un usuario para eliminar&quot;</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Confirmaci&oacute;n antes de eliminar</p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><br>&nbsp;</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.2.1 Acceso a la pesta&ntilde;a <strong style="font-weight: bold;">Usuarios</strong></h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al hacer clic en este bot&oacute;n, se abre la ventana correspondiente a la <strong style="font-weight: bold;">pesta&ntilde;a&nbsp;</strong><strong style="font-weight: bold;">Usuarios</strong>, donde se encuentra el panel completo para la gesti&oacute;n de usuarios.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.2.2 Acceso restringido</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Solo los usuarios que hayan iniciado sesi&oacute;n con el rol de <strong style="font-weight: bold;">Administrador</strong> pueden acceder a esta secci&oacute;n. Los usuarios con rol <strong style="font-weight: bold;">Vendedor</strong> no tienen permisos para gestionar cuentas.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.2.3 Registro de nuevos usuarios</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Los administradores pueden registrar nuevos usuarios, ya sea con rol de <strong style="font-weight: bold;">Vendedor</strong> o <strong style="font-weight: bold;">Administrador</strong>.<br>&nbsp;Para ello, deben completar los siguientes campos:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Nombre:</strong> Nombre del nuevo usuario</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Correo electr&oacute;nico:</strong> Correo v&aacute;lido que servir&aacute; como usuario de acceso</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Contrase&ntilde;a:</strong> Clave personal del nuevo usuario</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Rol:</strong> Selecci&oacute;n entre <em style="font-style: italic;">Vendedor</em> o <em style="font-style: italic;">Administrador</em></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Luego, se debe presionar el bot&oacute;n <strong style="font-weight: bold;">Registrar</strong> para guardar el nuevo usuario.</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si se intenta registrar un usuario sin completar todos los campos, el sistema mostrar&aacute; un mensaje de error:<br><strong style="font-weight: bold;">&quot;Todos los campos son obligatorios.&quot;</strong></blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.2.4 Actualizaci&oacute;n de usuarios</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Cuando se selecciona un usuario en la lista (tabla), el formulario se completa autom&aacute;ticamente con sus datos.<br>&nbsp;En ese momento:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El bot&oacute;n <strong style="font-weight: bold;">Registrar</strong> se desactiva (ya que se trata de un usuario existente)</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Se habilitan los botones <strong style="font-weight: bold;">Actualizar</strong> y <strong style="font-weight: bold;">Eliminar</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Despu&eacute;s de modificar los datos, presione <strong style="font-weight: bold;">Actualizar</strong> para guardar los cambios.<br>&nbsp;El sistema mostrar&aacute; una ventana de confirmaci&oacute;n:<br><strong style="font-weight: bold;">&quot;Usuario actualizado correctamente.&quot;</strong></p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si se intenta actualizar sin haber seleccionado un usuario previamente, se mostrar&aacute; el siguiente mensaje:<br><strong style="font-weight: bold;">&quot;Selecciona un usuario a editar.&quot;</strong></blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.2.5 Eliminaci&oacute;n de usuarios</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Una vez seleccionado un usuario de la lista, puede eliminarlo presionando el bot&oacute;n <strong style="font-weight: bold;">Eliminar</strong>.<br>&nbsp;El sistema mostrar&aacute; una ventana de confirmaci&oacute;n con el mensaje:</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">&quot;&iquest;Deseas eliminar este usuario?&quot;</strong><br>Con dos opciones: <strong style="font-weight: bold;">Yes</strong> o <strong style="font-weight: bold;">No</strong>.</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Si se presiona <strong style="font-weight: bold;">Yes</strong>, el usuario ser&aacute; eliminado del sistema y se mostrar&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Usuario eliminado correctamente.&quot;</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al presionar <strong style="font-weight: bold;">OK</strong> en ese mensaje (o cerrar la ventana emergente), se confirma la acci&oacute;n.</p>
+    </li>
+</ul>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si no se ha seleccionado ning&uacute;n usuario antes de presionar el bot&oacute;n Eliminar, aparecer&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Selecciona un usuario para eliminar.&quot;</strong></blockquote>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Advertencia: Esta acci&oacute;n no se puede deshacer. Aseg&uacute;rese de que el usuario realmente debe ser eliminado.</blockquote>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'><strong><span style="background: transparent;">4.3 Clientes</span></strong></h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El bot&oacute;n <strong style="font-weight: bold;">Clientes</strong> permite acceder al m&oacute;dulo de gesti&oacute;n de clientes registrados. Al hacer clic, se abre la pesta&ntilde;a correspondiente donde podr&aacute; visualizar, registrar, modificar o eliminar datos de los clientes.</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Permite:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Registrar clientes con DNI, nombre, tel&eacute;fono, direcci&oacute;n y raz&oacute;n social</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Actualizar y eliminar clientes seleccionados</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Validaciones similares a la gesti&oacute;n de usuarios</p>
+    </li>
+</ul>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.3.1 Acceso a la pesta&ntilde;a de clientes</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al presionar este bot&oacute;n, se abre la <strong style="font-weight: bold;">pesta&ntilde;a destinada a la gesti&oacute;n de clientes</strong>, donde se muestran los campos necesarios para la administraci&oacute;n de su informaci&oacute;n.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.3.2 Registro de clientes</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Para registrar un nuevo cliente, se deben completar los siguientes campos obligatorios:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">DNI</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Nombre</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Tel&eacute;fono</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Direcci&oacute;n</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Raz&oacute;n social</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Una vez ingresados todos los datos, presione el bot&oacute;n <strong style="font-weight: bold;">Registrar</strong> para guardar el nuevo cliente.</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si uno o m&aacute;s campos est&aacute;n vac&iacute;os, el sistema mostrar&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Todos los campos son obligatorios.&quot;</strong></blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.3.3 Actualizaci&oacute;n de clientes</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al seleccionar un cliente de la lista, sus datos se cargar&aacute;n autom&aacute;ticamente en los campos del formulario.<br>Puede modificar cualquier informaci&oacute;n y luego presionar el bot&oacute;n <strong style="font-weight: bold;">Actualizar</strong>.</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El sistema confirmar&aacute; la acci&oacute;n con el mensaje:<br><strong style="font-weight: bold;">&quot;Cliente actualizado correctamente.&quot;</strong></p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si se intenta actualizar sin seleccionar primero un cliente de la lista, se mostrar&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Selecciona un cliente para editar.&quot;</strong></blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.3.4 Eliminaci&oacute;n de clientes</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Una vez que se ha seleccionado un cliente de la lista, puede eliminarlo presionando el bot&oacute;n <strong style="font-weight: bold;">Eliminar</strong>.<br>&nbsp;Aparecer&aacute; una ventana de confirmaci&oacute;n con el mensaje:</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">&quot;&iquest;Desea eliminar este cliente?&quot;</strong><br>Opciones: <strong style="font-weight: bold;">Yes</strong> o <strong style="font-weight: bold;">No</strong></p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Si se presiona <strong style="font-weight: bold;">No</strong>, no se realiza ninguna acci&oacute;n.</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Si se presiona <strong style="font-weight: bold;">Yes</strong>, el cliente es eliminado del sistema y se muestra el mensaje:<br><strong style="font-weight: bold;">&quot;Cliente eliminado correctamente.&quot;</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Luego se debe presionar <strong style="font-weight: bold;">OK</strong> para cerrar el mensaje, o cerrar la ventana desde la opci&oacute;n de la X.</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si se intenta eliminar sin haber seleccionado previamente un cliente, el sistema mostrar&aacute; el siguiente mensaje:<br><strong style="font-weight: bold;">&quot;Selecciona un cliente para eliminar.&quot;</strong></blockquote>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'><strong><span style="background: transparent;">4.4 Proveedores</span></strong></h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El bot&oacute;n ya la pesta&ntilde;a <strong style="font-weight: bold;">Proveedores</strong> permite acceder al m&oacute;dulo de gesti&oacute;n de empresas proveedoras. Al hacer clic, se abre la pesta&ntilde;a correspondiente donde podr&aacute; visualizar, registrar, actualizar o eliminar informaci&oacute;n de los proveedores registrados.</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Permite:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Registrar proveedores con DNI, nombre, tel&eacute;fono, direcci&oacute;n y raz&oacute;n social</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Actualizar y eliminar proveedores seleccionados</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Bot&oacute;n &ldquo;Nuevo proveedor&rdquo; limpia campos</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Confirmaci&oacute;n antes de eliminar</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Validaciones por campos vac&iacute;os o no seleccionados</p>
+    </li>
+</ul>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.4.1 Acceso a la pesta&ntilde;a de proveedores</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al presionar este bot&oacute;n o cambiar a la pesta&ntilde;a de proveedores, se muestra autom&aacute;ticamente:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Una <strong style="font-weight: bold;">lista de proveedores registrados</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Los <strong style="font-weight: bold;">campos de formulario</strong> para gestionar la informaci&oacute;n</p>
+    </li>
+</ul>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.4.2 Registro de proveedores</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Para registrar un nuevo proveedor, se deben completar los siguientes campos:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">DNI</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Nombre</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Tel&eacute;fono</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Direcci&oacute;n</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Raz&oacute;n social</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Luego, presione el bot&oacute;n <strong style="font-weight: bold;">Registrar Proveedor</strong>.</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si se intenta registrar dejando uno o m&aacute;s campos vac&iacute;os, aparecer&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Todos los campos son obligatorios.&quot;</strong></blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.4.3 Actualizaci&oacute;n de proveedores</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al seleccionar un proveedor de la lista, sus datos se cargan autom&aacute;ticamente en los campos del formulario.<br>&nbsp;En ese momento:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El bot&oacute;n <strong style="font-weight: bold;">Registrar Proveedor</strong> se desactiva (para evitar duplicados)</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Puede editar los campos y luego presionar <strong style="font-weight: bold;">Actualizar Proveedor</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Si la actualizaci&oacute;n es exitosa, el sistema mostrar&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Proveedor actualizado correctamente.&quot;</strong></p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si intenta actualizar sin haber seleccionado un proveedor, aparecer&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Seleccione un proveedor para editar.&quot;</strong></blockquote>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si selecciona un proveedor y luego deja alg&uacute;n campo vac&iacute;o antes de actualizar, aparecer&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Todos los campos son obligatorios.&quot;</strong></blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.4.4 Eliminaci&oacute;n de proveedores</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al seleccionar un proveedor de la lista y presionar el bot&oacute;n <strong style="font-weight: bold;">Eliminar Proveedor</strong>, se mostrar&aacute; una ventana de confirmaci&oacute;n con el mensaje:</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">&quot;&iquest;Desea eliminar este proveedor?&quot;</strong><br>Opciones: <strong style="font-weight: bold;">Yes</strong> o <strong style="font-weight: bold;">No</strong></p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Si presiona <strong style="font-weight: bold;">No</strong>, la ventana se cierra sin realizar cambios.</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Si presiona <strong style="font-weight: bold;">Yes</strong>, el proveedor ser&aacute; eliminado y se mostrar&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Proveedor eliminado correctamente.&quot;</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Puede cerrar esta ventana presionando <strong style="font-weight: bold;">OK</strong> o el bot&oacute;n de cierre (<strong style="font-weight: bold;">X</strong>).</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si no se ha seleccionado ning&uacute;n proveedor al intentar eliminar, aparecer&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Seleccione un proveedor para eliminar.&quot;</strong></blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.4.5 Bot&oacute;n Nuevo Proveedor</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Este bot&oacute;n permite limpiar todos los campos del formulario, incluso si previamente se ha seleccionado un proveedor.</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al presionarlo, los campos quedan vac&iacute;os y listos para introducir nuevos datos.</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Tambi&eacute;n se habilita nuevamente el bot&oacute;n <strong style="font-weight: bold;">Registrar Proveedor</strong> para permitir el guardado de un nuevo proveedor.</p>
+    </li>
+</ul>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'><strong><span style="background: transparent;">4.5 Productos</span></strong></h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El bot&oacute;n y la pesta&ntilde;a <strong style="font-weight: bold;">Productos</strong> abre la ventana correspondiente al m&oacute;dulo de <strong style="font-weight: bold;">inventario y gesti&oacute;n de productos</strong>. Desde esta pesta&ntilde;a es posible registrar, actualizar, eliminar productos, as&iacute; como generar reportes del stock en Excel.</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Permite:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Registrar productos: c&oacute;digo, nombre, descripci&oacute;n, stock, precio, proveedor</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Actualizar y eliminar productos</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Bot&oacute;n &ldquo;Nuevo producto&rdquo; limpia campos</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Generar reporte de inventario (Excel) con bot&oacute;n:</p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">&quot;Reporte generado correctamente&quot;</p>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.5.1 Acceso a la pesta&ntilde;a de productos</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al hacer clic en el bot&oacute;n Productos o al cambiar a la pesta&ntilde;a correspondiente, se abre autom&aacute;ticamente la ventana de gesti&oacute;n de productos. En esta ventana se carga la lista completa de productos registrados, mostrando los siguientes datos:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">ID del producto</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">C&oacute;digo</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Nombre</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Descripci&oacute;n</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Proveedor</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Stock disponible</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Precio</p>
+    </li>
+</ul>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.5.2 Registro de nuevos productos</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Para a&ntilde;adir un nuevo producto, se deben completar los siguientes campos:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">C&oacute;digo del producto</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Nombre del producto</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Descripci&oacute;n</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Cantidad (stock inicial)</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Precio</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Proveedor:</strong> Seleccionable desplegable con todos los proveedores registrados</p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Una vez completado el formulario, presione el bot&oacute;n <strong style="font-weight: bold;">Registrar Producto</strong>.</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si uno o m&aacute;s campos est&aacute;n vac&iacute;os, el sistema mostrar&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Todos los campos son obligatorios.&quot;</strong></blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.5.3 Actualizaci&oacute;n de productos</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al seleccionar un producto de la lista, sus datos se cargan en los campos del formulario.<br>Puede realizar modificaciones y luego presionar <strong style="font-weight: bold;">Actualizar Producto</strong>.</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si deja alg&uacute;n campo vac&iacute;o antes de actualizar, se mostrar&aacute; nuevamente el mensaje:<br><strong style="font-weight: bold;">&quot;Todos los campos son obligatorios.&quot;</strong></blockquote>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si no ha seleccionado ning&uacute;n producto y presiona <strong style="font-weight: bold;">Actualizar Producto</strong>, tambi&eacute;n se mostrar&aacute; un mensaje indicando que debe seleccionar un producto.</blockquote>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.5.4 Eliminaci&oacute;n de productos</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Puede eliminar un producto de la lista seleccion&aacute;ndolo y presionando el bot&oacute;n <strong style="font-weight: bold;">Eliminar Producto</strong>.<br>&nbsp;El sistema mostrar&aacute; un mensaje de confirmaci&oacute;n:</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">&quot;&iquest;Desea eliminar este producto?&quot;</strong><br>Opciones: <strong style="font-weight: bold;">Yes</strong> o <strong style="font-weight: bold;">No</strong></p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Si selecciona <strong style="font-weight: bold;">No</strong>, la ventana se cierra sin cambios.</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Si selecciona <strong style="font-weight: bold;">Yes</strong>, el producto ser&aacute; eliminado y aparecer&aacute; el mensaje:<br><strong style="font-weight: bold;">&quot;Producto eliminado correctamente.&quot;</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Puede cerrar el mensaje presionando <strong style="font-weight: bold;">OK</strong> o en la <strong style="font-weight: bold;">X</strong>.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.5.5 Nuevo producto</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Este bot&oacute;n <strong style="font-weight: bold;">limpia todos los campos del formulario</strong>, &uacute;til si ha seleccionado un producto anteriormente.<br>Al presionar <strong style="font-weight: bold;">Nuevo Producto</strong>:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Se vac&iacute;an todos los campos</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Se habilita nuevamente el bot&oacute;n <strong style="font-weight: bold;">Registrar Producto</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Esto permite ingresar la informaci&oacute;n de un nuevo producto desde cero.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.5.6 Generar Excel con stock</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El bot&oacute;n <strong style="font-weight: bold;">&quot;Crear un Excel con stock&quot;</strong> genera un archivo Excel con toda la informaci&oacute;n del inventario actual.</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Se abre autom&aacute;ticamente el archivo generado</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Se muestra un mensaje indicando:<br><strong style="font-weight: bold;">&quot;Reporte generado correctamente.&quot;</strong></p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al presionar <strong style="font-weight: bold;">OK</strong>, el mensaje se cierra.</p>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'><strong><span style="background: transparent;">4.6 Ventas</span></strong></h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El bot&oacute;n y la pesta&ntilde;a<strong style="font-weight: bold;">Ventas</strong> permite acceder al historial completo de las ventas realizadas en el sistema. Al hacer clic, se abre la pesta&ntilde;a correspondiente donde se puede consultar, buscar y revisar la informaci&oacute;n de todas las transacciones.</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Muestra historial completo de ventas: ID, cliente, vendedor, fecha, total.</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al seleccionar una venta y pulsar &ldquo;Abrir PDF&rdquo;, se muestra el comprobante generado con todos los datos de la venta.</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El PDF incluye datos del cliente, empresa, productos, totales y fecha.</p>
+    </li>
+</ul>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.6.1 Acceso a la pesta&ntilde;a de ventas</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al presionar este bot&oacute;n o cambiar a la pesta&ntilde;a de ventas, se abre autom&aacute;ticamente una ventana que muestra una lista de todas las ventas registradas.</p>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Cada registro de venta incluye la siguiente informaci&oacute;n:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">ID de la venta</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">ID del cliente</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Nombre del vendedor</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Fecha de la venta</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Total de la venta</strong></p>
+    </li>
+</ul>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.6.2 Consultar detalle de una venta</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Para ver el detalle de una venta espec&iacute;fica:</p>
+<ol>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Seleccione una venta de la lista.</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Presione el bot&oacute;n <strong style="font-weight: bold;">Abrir PDF de venta (fecha seleccionada)</strong>.</p>
+    </li>
+</ol>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Esto abrir&aacute; el archivo PDF que se gener&oacute; en el momento de registrar dicha venta.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.6.3 Contenido del PDF</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El documento contiene la factura completa de la venta, incluyendo:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Datos completos del cliente</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Datos de la empresa</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Fecha de emisi&oacute;n</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Detalle de todos los productos vendidos</strong>, con cantidades, precios y totales</p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Este archivo se abre autom&aacute;ticamente en un visor PDF.</p>
+<blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">Nota: El PDF tambi&eacute;n queda guardado en el paquete de ventas con el nombre <code style='font-family: "Liberation Mono", monospace;'>venta_ID_fecha.pdf</code>.</blockquote>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'><strong><span style="background: transparent;">4.7 Configuraci&oacute;n</span></strong></h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Solo para Administradores.</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Permite actualizar los datos fiscales de la empresa:</p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">NIF, nombre, tel&eacute;fono, raz&oacute;n social, direcci&oacute;n</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Esta informaci&oacute;n aparece en las facturas PDF generadas</p>
+    </li>
+</ul>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al hacer clic en este bot&oacute;n o cambiar a la pesta&ntilde;a correspondiente, se abre la ventana donde se muestran los datos actuales de la empresa registrados en el sistema.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.7.2 Acceso restringido</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Esta secci&oacute;n <strong style="font-weight: bold;">solo est&aacute; disponible para usuarios con rol de Administrador</strong>. Los usuarios con rol Vendedor no tienen permiso para visualizar ni modificar esta informaci&oacute;n.</p>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.7.3 Datos configurables</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">En esta ventana, el administrador puede consultar y modificar los siguientes campos:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">DNI / NIF de la empresa</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Nombre de la empresa</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Tel&eacute;fono de contacto</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Raz&oacute;n social</strong></p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Direcci&oacute;n fiscal</strong></p>
+    </li>
+</ul>
+<h4 style='margin-top: 0.21cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:16px;font-weight: bold;'>4.7.4 Actualizaci&oacute;n de datos</h4>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Una vez modificados los datos, se debe presionar el bot&oacute;n <strong style="font-weight: bold;">Actualizar</strong> para guardar los cambios.<br>&nbsp;Estos datos se utilizar&aacute;n en la generaci&oacute;n de las facturas PDF de venta, asegurando que cada comprobante contenga la informaci&oacute;n fiscal actualizada de la empresa.</p>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'><strong><span style="background: transparent;">4.8 Funcionalidades adicionales</span></strong></h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Adem&aacute;s del acceso a los m&oacute;dulos principales, la ventana principal del sistema <strong style="font-weight: bold;">TecnoLuis Gesti&oacute;nStock</strong> incluye varias herramientas &uacute;tiles en su interfaz superior para mejorar la experiencia del usuario. .</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Generaci&oacute;n de gr&aacute;fico de ventas:</strong></p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">En la parte superior o lateral (seg&uacute;n disposici&oacute;n), se encuentra un bot&oacute;n para <strong style="font-weight: bold;">generar un gr&aacute;fico de ventas</strong>.</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al presionarlo, el sistema solicitar&aacute; que se seleccione una <strong style="font-weight: bold;">fecha espec&iacute;fica&nbsp;</strong><strong style="font-weight: bold;">en el JCalendar</strong>.</p>
+            </li>
+            <li>
+                <blockquote style="margin-left: 1cm;margin-right: 1cm;background: transparent;">⚠️ Si no se selecciona ninguna fecha, se mostrar&aacute; un mensaje:<br><strong style="font-weight: bold;">&quot;Debe seleccionar una fecha.&quot;</strong></blockquote>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Una vez seleccionada la fecha, se genera autom&aacute;ticamente un <strong style="font-weight: bold;">gr&aacute;fico visual</strong> que muestra:</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El total de ventas realizadas por ID de venta</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El total acumulado de cada transacci&oacute;n</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El porcentaje de participaci&oacute;n de cada venta en el total</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Datos detallados que permiten interpretar el comportamiento comercial</p>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">El gr&aacute;fico puede cerrarse libremente una vez visualizado.</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Inicio &rarr;&nbsp;</strong><strong style="font-weight: bold;">Bot&oacute;n Cerrar sesi&oacute;n:</strong></p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">En la barra superior se encuentra el bot&oacute;n <strong style="font-weight: bold;">Cerrar Sesi&oacute;n</strong>, el cual permite finalizar la sesi&oacute;n del usuario actual.</p>
+            </li>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Al presionar este bot&oacute;n, la ventana principal se cierra y se abre nuevamente la <strong style="font-weight: bold;">ventana de inicio de sesi&oacute;n</strong>, permitiendo el cambio de usuario o salida del sistema.</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Ayuda &rarr;Primeros pasos</strong><strong style="font-weight: bold;">:</strong></p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Abre una ventana con una breve gu&iacute;a introductoria sobre c&oacute;mo comenzar a usar el sistema. Ideal para nuevos usuarios.</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Ayuda &rarr;</strong><strong style="font-weight: bold;">Manual de usuario:</strong></p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Abre una ventana con el <strong style="font-weight: bold;">manual completo del sistema</strong>.<br>Esta ventana incluye una <strong style="font-weight: bold;">barra superior</strong> con un bot&oacute;n que permite abrir el manual en formato <strong style="font-weight: bold;">PDF</strong> para su lectura o descarga.</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;"><strong style="font-weight: bold;">Ayuda &rarr;</strong><strong style="font-weight: bold;">Cr&eacute;ditos:</strong></p>
+        <ul>
+            <li>
+                <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Muestra una ventana con la informaci&oacute;n del autor del proyecto, incluyendo datos personales, acad&eacute;micos o de contacto, autor del sistema, nombre y datos</p>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>5. Durante el uso del sistema</h2>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Cada m&oacute;dulo abre una ventana interna</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Se registra la fecha y hora de cada operaci&oacute;n</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Validaci&oacute;n de datos para evitar errores de entrada</p>
+    </li>
+</ul>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>6. Reportes y exportaci&oacute;n</h2>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Generaci&oacute;n de reportes en PDF</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Exportaci&oacute;n de datos a Excel para an&aacute;lisis externo</p>
+    </li>
+</ul>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>7. Seguridad y sesi&oacute;n</h2>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Solo se permite una instancia de ventana activa</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Los datos se guardan autom&aacute;ticamente (por serializaci&oacute;n o base de datos)</p>
+    </li>
+</ul>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>8. Ayuda y Cr&eacute;ditos</h2>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">La opci&oacute;n &ldquo;Cr&eacute;ditos&rdquo; muestra los datos del creador del proyecto</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">&ldquo;Manual de usuario&rdquo; abre una ventana con este mismo documento</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Se puede abrir tambi&eacute;n en formato PDF desde el bot&oacute;n superior</p>
+    </li>
+</ul>
+<h2 style='margin-top: 0.35cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:24px;font-weight: bold;'>9. Reportes personalizados con JasperReports</h2>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Seg&uacute;n el enunciado del proyecto, se debe incluir un informe con JasperReports. El sistema incluye dos:</p>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'>9.1 Reporte de inventario (reporte de stock)</h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Muestra:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">C&oacute;digo del producto</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Nombre</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Descripci&oacute;n</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Proveedor</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Stock actual</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Precio</p>
+    </li>
+</ul>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'>9.2 Reporte de ventas por transacci&oacute;n</h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Incluye:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">ID de la venta</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Fecha</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Nombre del vendedor</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Total vendido</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Gr&aacute;fico con totales diarios y por transacci&oacute;n</p>
+    </li>
+</ul>
+<h3 style='margin-top: 0.25cm;margin-bottom: 0.21cm;background: transparent;font-family: "Liberation Serif", serif;font-size:19px;font-weight: bold;'>9.3 Archivos PDF generados</h3>
+<p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Cada venta genera un archivo PDF autom&aacute;ticamente en el paquete <code style='font-family: "Liberation Mono", monospace;'>ventas</code>, con:</p>
+<ul>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Datos de la empresa</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Fecha</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Datos del cliente</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Productos vendidos</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Totales</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Fecha</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">Datos de la empresa</p>
+    </li>
+    <li>
+        <p style="line-height: 115%;margin-bottom: 0.25cm;background: transparent;">ID de la venta</p>
+    </li>
+</ul>
+<p style="line-height: 100%;margin-bottom: 0cm;background: transparent;"><br></p></body>
+</html>
