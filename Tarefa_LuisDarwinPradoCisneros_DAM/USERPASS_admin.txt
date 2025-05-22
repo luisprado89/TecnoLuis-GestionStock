@@ -1,0 +1,3 @@
+El usuario que puedes usar para abrir el programa es:
+Correo: admin
+Contraseña: admin
