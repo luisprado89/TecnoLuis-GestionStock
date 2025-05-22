@@ -1,7 +1,10 @@
 package Modelo;
 
 import Util.Conexion;
-
+/**
+ *
+ * @author LUIS
+ */
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

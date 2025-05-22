@@ -1,5 +1,8 @@
 package Modelo;
-
+/**
+ *
+ * @author LUIS
+ */
 public class Empresa {
 
     private int id;

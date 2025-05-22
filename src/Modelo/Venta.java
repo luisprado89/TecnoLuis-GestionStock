@@ -1,7 +1,10 @@
 package Modelo;
 
 import java.time.LocalDateTime;
-
+/**
+ *
+ * @author LUIS
+ */
 public class Venta {
     private int id;
     private int idCliente;

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
 import javax.swing.*;
@@ -39,7 +35,7 @@ public class VentanaPrimerosPasos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Primeros Pasos - Guía Rápida de Uso");
 
-        jLabel1.setText("<html>     <div style='text-align: center; font-family: Segoe UI, sans-serif;'>         <h2>Primeros Pasos</h2>         <p>             Bienvenido al sistema de gestión empresarial <strong>TecnoLuis-GestionStock</strong>.         </p>         <p>             Esta aplicación te permite llevar el control de <strong>ventas, productos, clientes, proveedores</strong> y más.         </p>         <p>             Para comenzar:             <ul style='text-align: left; display: inline-block;'>                 <li>Inicia sesión con tus credenciales (correo y contraseña).</li>                 <li>Accede al menú lateral para navegar entre las secciones.</li>                 <li>En <strong>“Nueva Venta”</strong> podrás registrar operaciones comerciales.</li>                 <li>En <strong>“Productos”</strong> administra tu inventario y stock disponible.</li>                 <li>Usa <strong>“Configuración”</strong> para editar los datos de la empresa.</li>             </ul>         </p>         <p>             Explora cada módulo paso a paso y si necesitas ayuda detallada,<br>             accede a la sección <strong>“Manual de Usuario”</strong> desde el menú de Ayuda.         </p>     </div> </html> ");
+        jLabel1.setText("<html>     <div style='text-align: center; font-family: Segoe UI, sans-serif;'>         <h2>Primeros Pasos</h2>         <p>             Bienvenido al sistema de gestión empresarial <strong>TecnoLuis-GestionStock</strong>.         </p>         <p>             Esta aplicación te permite controlar <strong>ventas, productos, clientes, proveedores</strong> y gestionar usuarios según su rol.         </p>         <p>             Para comenzar:             <ul style='text-align: left; display: inline-block;'>                 <li>Inicia sesión con tus credenciales (correo y contraseña).</li>                 <li>El sistema distingue entre <strong>Administrador</strong> (acceso completo) y <strong>Vendedor</strong> (acceso limitado).</li>                 <li>Solo los Administradores pueden registrar, editar o eliminar usuarios.</li>                 <li>Accede al menú lateral para navegar entre módulos como <strong>Nueva Venta, Productos, Clientes</strong> y <strong>Proveedores</strong>.</li>                 <li>Desde <strong>Configuración</strong> puedes actualizar los datos fiscales de la empresa (solo Administradores).</li>             </ul>         </p>         <p>             Explora cada módulo paso a paso. Si necesitas más detalles,<br>             accede al <strong>Manual de Usuario</strong> desde el menú de Ayuda.         </p>     </div> </html> ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,15 +43,15 @@ public class VentanaPrimerosPasos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();

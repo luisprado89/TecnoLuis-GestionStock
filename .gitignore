@@ -15,7 +15,6 @@
 *.war
 *.nar
 *.ear
-*.zip
 *.tar.gz
 *.rar
 
@@ -39,3 +38,4 @@ replay_pid*
 # Asegúrate de que estas líneas NO estén en tu .gitignore:
 # .idea/
 # *.iml
+/dist/

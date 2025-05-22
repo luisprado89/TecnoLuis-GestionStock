@@ -26,8 +26,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="560" max="-2" attributes="0"/>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="429" max="-2" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -35,8 +35,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="496" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="354" max="-2" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -44,7 +44,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;     &lt;div style=&apos;text-align: center; font-family: Segoe UI, sans-serif;&apos;&gt;         &lt;h2&gt;Primeros Pasos&lt;/h2&gt;         &lt;p&gt;             Bienvenido al sistema de gesti&#xf3;n empresarial &lt;strong&gt;TecnoLuis-GestionStock&lt;/strong&gt;.         &lt;/p&gt;         &lt;p&gt;             Esta aplicaci&#xf3;n te permite llevar el control de &lt;strong&gt;ventas, productos, clientes, proveedores&lt;/strong&gt; y m&#xe1;s.         &lt;/p&gt;         &lt;p&gt;             Para comenzar:             &lt;ul style=&apos;text-align: left; display: inline-block;&apos;&gt;                 &lt;li&gt;Inicia sesi&#xf3;n con tus credenciales (correo y contrase&#xf1;a).&lt;/li&gt;                 &lt;li&gt;Accede al men&#xfa; lateral para navegar entre las secciones.&lt;/li&gt;                 &lt;li&gt;En &lt;strong&gt;&#x201c;Nueva Venta&#x201d;&lt;/strong&gt; podr&#xe1;s registrar operaciones comerciales.&lt;/li&gt;                 &lt;li&gt;En &lt;strong&gt;&#x201c;Productos&#x201d;&lt;/strong&gt; administra tu inventario y stock disponible.&lt;/li&gt;                 &lt;li&gt;Usa &lt;strong&gt;&#x201c;Configuraci&#xf3;n&#x201d;&lt;/strong&gt; para editar los datos de la empresa.&lt;/li&gt;             &lt;/ul&gt;         &lt;/p&gt;         &lt;p&gt;             Explora cada m&#xf3;dulo paso a paso y si necesitas ayuda detallada,&lt;br&gt;             accede a la secci&#xf3;n &lt;strong&gt;&#x201c;Manual de Usuario&#x201d;&lt;/strong&gt; desde el men&#xfa; de Ayuda.         &lt;/p&gt;     &lt;/div&gt; &lt;/html&gt; "/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;     &lt;div style=&apos;text-align: center; font-family: Segoe UI, sans-serif;&apos;&gt;         &lt;h2&gt;Primeros Pasos&lt;/h2&gt;         &lt;p&gt;             Bienvenido al sistema de gesti&#xf3;n empresarial &lt;strong&gt;TecnoLuis-GestionStock&lt;/strong&gt;.         &lt;/p&gt;         &lt;p&gt;             Esta aplicaci&#xf3;n te permite controlar &lt;strong&gt;ventas, productos, clientes, proveedores&lt;/strong&gt; y gestionar usuarios seg&#xfa;n su rol.         &lt;/p&gt;         &lt;p&gt;             Para comenzar:             &lt;ul style=&apos;text-align: left; display: inline-block;&apos;&gt;                 &lt;li&gt;Inicia sesi&#xf3;n con tus credenciales (correo y contrase&#xf1;a).&lt;/li&gt;                 &lt;li&gt;El sistema distingue entre &lt;strong&gt;Administrador&lt;/strong&gt; (acceso completo) y &lt;strong&gt;Vendedor&lt;/strong&gt; (acceso limitado).&lt;/li&gt;                 &lt;li&gt;Solo los Administradores pueden registrar, editar o eliminar usuarios.&lt;/li&gt;                 &lt;li&gt;Accede al men&#xfa; lateral para navegar entre m&#xf3;dulos como &lt;strong&gt;Nueva Venta, Productos, Clientes&lt;/strong&gt; y &lt;strong&gt;Proveedores&lt;/strong&gt;.&lt;/li&gt;                 &lt;li&gt;Desde &lt;strong&gt;Configuraci&#xf3;n&lt;/strong&gt; puedes actualizar los datos fiscales de la empresa (solo Administradores).&lt;/li&gt;             &lt;/ul&gt;         &lt;/p&gt;         &lt;p&gt;             Explora cada m&#xf3;dulo paso a paso. Si necesitas m&#xe1;s detalles,&lt;br&gt;             accede al &lt;strong&gt;Manual de Usuario&lt;/strong&gt; desde el men&#xfa; de Ayuda.         &lt;/p&gt;     &lt;/div&gt; &lt;/html&gt; "/>
       </Properties>
     </Component>
   </SubComponents>

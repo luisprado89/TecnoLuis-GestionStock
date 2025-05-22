@@ -1,19 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
-
-import Util.UtilImagenes;
-import Util.UtilImagenes2;
-import Util.UtilImagenesM;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -28,33 +17,13 @@ public class VentanaManualUsuario extends javax.swing.JFrame {
      */
     public VentanaManualUsuario() {
         initComponents();
-        setVisible(true);
+        setResizable(false);
+
         // Centrar ventana y evitar que cierre el programa
         setLocationRelativeTo(null); // Centrado en pantalla (o puedes usar setLocationRelativeTo(Sistema.this))
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Solo cierra esta ventana
 
 
-        
-        // Opcional: impedir redimensionar
-        //setResizable(false);
-        setLocationRelativeTo(null);
-        // ✅ Redimensionar la imagen con instancia de UtilImagenes2
-        System.out.println("Escalado del sistema: " + UtilImagenesM.obtenerEscaladoPorcentaje() + "%");
-        //jLabel2.setOpaque(true);
-        //jLabel2.setBackground(Color.GRAY);
-
-        ImageIcon iconob = UtilImagenesM.escalarImagenAuto("/Img/pdfsheet128.png", 45, 45);
-        jButton1.setIcon(iconob);
-        
-        ImageIcon icono = UtilImagenesM.escalarImagenAuto("/Img/pdfsheet128.png", 45, 45);
-        jLabel2.setIcon(icono);
-
-        URL url = getClass().getResource("/Img/pdf512.png");
-        System.out.println("Ruta imagen: " + url);
-        if (url == null) {
-            JOptionPane.showMessageDialog(this, "¡Imagen no encontrada en: /Img/pdf512.png");
-        }
-        System.out.println("Icon width: " + icono.getIconWidth() + ", height: " + icono.getIconHeight());
 
         cargarManualDesdeArchivo();  //  Cargar el HTML desde el paquete Util
     }
@@ -70,8 +39,17 @@ public class VentanaManualUsuario extends javax.swing.JFrame {
                 }
                 br.close();
 
-                jEditorPane1.setContentType("text/html");
-                jEditorPane1.setText(sb.toString());
+                //jEditorPane1.setContentType("text/html");
+                //jEditorPane1.setText(sb.toString());
+
+                URL url = getClass().getClassLoader().getResource("Util/ManualCompleto.html");
+                if (url != null) {
+                    jEditorPane1.setPage(url);
+                } else {
+                    jEditorPane1.setText("<html><body><h2>No se encontró el archivo HTML</h2></body></html>");
+                }
+
+
                 jEditorPane1.setEditable(false);
                 jScrollPane1.setViewportView(jEditorPane1);
             } else {
@@ -93,8 +71,6 @@ public class VentanaManualUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
@@ -105,17 +81,11 @@ public class VentanaManualUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manual de Usuario - Instrucciones Completas");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("<html>     <div style='text-align: center; font-family: Segoe UI, sans-serif;'>         <h2>Manual de Usuario</h2>         <p>             Este sistema está diseñado para facilitar la gestión de los procesos operativos de una empresa.         </p>         <p>             <strong>Módulos principales:</strong>             <ul style='text-align: left; display: inline-block;'>                 <li><strong>Usuarios:</strong> Alta, baja y modificación de usuarios del sistema.</li>                 <li><strong>Clientes:</strong> Registro y edición de clientes habituales.</li>                 <li><strong>Proveedores:</strong> Gestión de empresas proveedoras.</li>                 <li><strong>Productos:</strong> Gestión de artículos disponibles, stock y precios.</li>                 <li><strong>Ventas:</strong> Registro de transacciones comerciales y generación de reportes.</li>                 <li><strong>Configuración:</strong> Datos generales de la empresa y ajustes básicos.</li>             </ul>         </p>         <p>             El sistema permite generar <strong>reportes en PDF</strong> y <strong>exportar datos a Excel</strong> con un solo clic.<br>             También podrás ver gráficos por fecha para tener una visión clara de tus ventas.         </p>         <p>             Para cualquier duda, contacta al desarrollador: <br>             <a href='mailto:luisprado89@gmail.com'>luisprado89@gmail.com</a>         </p>  <p>Lorem Ipsum \"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...\" \"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...\"  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer et augue a mauris scelerisque sollicitudin non et enim. Morbi porta, ligula sit amet gravida tincidunt, arcu turpis ultricies nisi, vel maximus lacus lacus et mauris. Nam finibus a dolor et tempus. Nulla vel aliquam libero. Quisque venenatis mollis ligula, at mattis augue dictum et. Vivamus vel elit tristique, bibendum ex sit amet, dapibus lacus. Integer commodo orci eget nulla mollis, quis congue lacus suscipit. Duis eget lectus justo. Fusce in volutpat nisi.  Fusce in felis finibus, condimentum purus sit amet, rhoncus libero. Vestibulum commodo quis velit vitae mollis. Aenean maximus turpis ipsum, vitae aliquet lectus dapibus ut. Aenean porta, lacus vitae rhoncus aliquam, felis enim vehicula justo, non iaculis urna leo id leo. Nunc id nibh urna. Nulla id urna elit. Donec ex massa, tincidunt in vehicula ut, facilisis vitae metus. Proin fringilla urna sit amet lorem molestie, non pharetra ex imperdiet.  In id nisl ut nulla volutpat pellentesque. Etiam nisl ante, sagittis ac dolor faucibus, dictum tempus sem. Proin interdum, diam ut condimentum auctor, ante leo vehicula quam, consequat eleifend orci ante sed magna. Aliquam efficitur et erat et pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget imperdiet mauris. Praesent vel pharetra dui. Nullam elementum ligula ornare lacinia ornare. Cras vitae elit ornare lectus tempus pellentesque at at dolor. Nulla cursus, elit et dapibus interdum, justo magna accumsan orci, vel gravida purus metus ac orci. Curabitur auctor eu orci fermentum pulvinar. Pellentesque consequat auctor tincidunt. Nunc porttitor gravida elit, et facilisis sem posuere vel.  Cras laoreet dui a augue consectetur rhoncus et eget sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum sed fermentum velit. Nunc ac varius felis. Etiam laoreet ultricies porta. Etiam non est lectus. Phasellus imperdiet suscipit consectetur. Aliquam quis justo sollicitudin sapien interdum efficitur eu et orci. Aenean et sapien ac risus fringilla tempor. Quisque porta cursus tristique. Donec sit amet sem interdum, congue arcu vel, euismod tortor. Aliquam dignissim varius mauris, ac dignissim nibh tincidunt ut. Vivamus a ligula neque. Fusce varius gravida velit, eu sagittis augue porttitor dictum. Proin rutrum faucibus sapien, ac egestas urna eleifend eget.  Mauris turpis augue, posuere id nisi sed, blandit dapibus tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel risus eu lorem tincidunt laoreet eu vel mauris. Proin et sem tempor, tempus nunc quis, aliquam libero. Duis bibendum enim nec massa pharetra, vel tincidunt sem pharetra. Vestibulum sit amet orci eu sem varius ullamcorper. Aenean et ultrices lorem. Cras suscipit, urna et gravida consectetur, justo felis blandit felis, eget blandit sapien metus non mi. Quisque feugiat, lorem sed varius rhoncus, augue neque semper velit, quis maximus risus tortor eget elit. Sed at magna ut ante vulputate eleifend.  Pellentesque nec augue venenatis lectus mollis rhoncus non in ligula. Praesent ultricies, mi ut faucibus maximus, massa felis consectetur neque, sit amet varius enim ligula eget lectus. Cras sit amet magna dignissim, sodales eros nec, posuere quam. Vestibulum lobortis semper nisl, sed ultrices augue viverra in. Fusce malesuada aliquam metus eu fringilla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam in justo at risus condimentum fermentum. Pellentesque congue dapibus placerat. Morbi eleifend erat sed lobortis dignissim. Nam ut tincidunt felis. Mauris non sem vel risus dictum congue. Fusce nunc turpis, pulvinar id nunc et, aliquet mollis eros. Duis maximus ante arcu, eget pulvinar nisl lacinia at.  Etiam tellus odio, vehicula nec lobortis in, suscipit sed massa. Sed maximus vehicula enim, quis iaculis ante dapibus nec. Nunc diam risus, consectetur in diam id, tempor rhoncus ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id rhoncus lectus. Nam at finibus augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Mauris at velit tincidunt risus tempus pellentesque eu ut ipsum. Morbi eu rutrum lectus. Vestibulum at neque purus. Curabitur quis fringilla nulla. Donec velit arcu, sagittis vitae tristique eget, gravida vitae ex. Vestibulum dapibus dui in ligula cursus accumsan. Mauris consequat vitae ipsum at vulputate.  Vestibulum aliquet gravida laoreet. In congue enim sed aliquet sodales. Nam ut enim tempor quam sollicitudin porta et eu risus. Nunc ultrices pretium mauris a viverra. Maecenas at augue in libero consequat interdum at at enim. Vivamus dapibus mollis nulla, eget dictum turpis accumsan in. In eu efficitur enim. Donec eu bibendum magna. Aliquam aliquam, tellus non pharetra pharetra, nulla eros mattis ex, quis varius enim augue vel nulla. Proin nunc leo, ornare sed commodo vitae, aliquam ac odio. Vestibulum interdum, massa a ultricies pharetra, massa turpis varius purus, efficitur porttitor velit nunc ut nibh. Duis pretium nulla finibus, gravida ipsum quis, bibendum ipsum.  Phasellus vestibulum arcu eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mattis vehicula purus, id placerat odio ultrices a. Nunc consectetur euismod dictum. In hac habitasse platea dictumst. Cras sed dolor iaculis, iaculis diam et, pretium augue. Ut in lacinia arcu, non tempor nisl. Mauris lobortis porttitor leo, eget pellentesque nisi posuere a. Maecenas congue nec dolor ut euismod.  Donec id nibh quis odio elementum condimentum. Sed ac orci sed ante dictum viverra. Suspendisse quis nibh in dolor lacinia porta sed vitae augue. Suspendisse potenti. Morbi finibus tellus magna, in hendrerit elit egestas et. Etiam molestie consectetur est, quis rutrum augue suscipit sed. Donec varius tincidunt nisi vel vehicula. Aenean congue nisi nec quam feugiat vehicula. Aliquam erat volutpat. Aliquam dapibus tellus vitae maximus sollicitudin. Generated 10 paragraphs, 913 words, 6084 bytes of Lorem Ipsum </p>   </div> </html> ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 400, 480));
-
-        jButton1.setText("hola");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 70, 110, 50));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 45, 45));
 
         jScrollPane1.setViewportView(jEditorPane1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 50, 670, 820));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 1150, 860));
 
         jMenu1.setText("Guía de Uso (PDF)  ");
 
@@ -136,7 +106,20 @@ public class VentanaManualUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        // Abre el PDF del manual de usuario ubicado en src/Util/ManualUsuarioCompleto.pdf
+        try {
+            File manual = new File("src/Util/ManualUsuarioCompleto.pdf");
+            if (manual.exists()) {
+                Desktop.getDesktop().open(manual);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró el archivo: src/Util/ManualUsuarioCompleto.pdf");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al abrir el manual: " + e.getMessage());
+        }
+
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
 
@@ -176,9 +159,7 @@ public class VentanaManualUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

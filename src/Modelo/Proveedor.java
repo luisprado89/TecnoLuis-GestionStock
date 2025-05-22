@@ -1,5 +1,8 @@
 package Modelo;
-
+/**
+ *
+ * @author LUIS
+ */
 public class Proveedor {
     private int id;
     private String dni;

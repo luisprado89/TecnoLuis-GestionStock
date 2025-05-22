@@ -12,7 +12,10 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import javax.swing.JFrame;
-
+/**
+ *
+ * @author LUIS
+ */
 public class Grafico {
     private JFreeChart chart;
     private final Conexion cn = new Conexion();

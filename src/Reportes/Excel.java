@@ -14,6 +14,10 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+/**
+ *
+ * @author LUIS
+ */
 
 public class Excel {
 
@@ -26,10 +30,14 @@ public class Excel {
         ResultSet rs = null;
 
         try {
-            // Logo
-            InputStream is = Excel.class.getResourceAsStream("/Img/logo.png");
+            // Cambiado: usar LogoTL.jpg
+            InputStream is = Excel.class.getResourceAsStream("/Img/LogoTL.jpg");
+            if (is == null) {
+                throw new FileNotFoundException("No se encontró el logo en: /Img/LogoTL.jpg");
+            }
+
             byte[] bytes = IOUtils.toByteArray(is);
-            int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
+            int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_JPEG);
             is.close();
 
             CreationHelper help = book.getCreationHelper();
@@ -60,7 +68,7 @@ public class Excel {
             celdaTitulo.setCellValue("Reporte de Productos");
             sheet.addMergedRegion(new CellRangeAddress(1, 2, 1, 4));
 
-            // Encabezados
+            // Cabecera
             String[] cabecera = {"Código", "Nombre", "Descripción", "Proveedor", "Existencia", "Precio"};
 
             CellStyle headerStyle = book.createCellStyle();
@@ -131,28 +139,20 @@ public class Excel {
             }
 
             Desktop.getDesktop().open(file);
-            JOptionPane.showMessageDialog(null, "Reporte Generado");
+            JOptionPane.showMessageDialog(null, "Reporte generado correctamente");
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Logo no encontrado. Verifica la ruta: src/Img/logo.png");
+            JOptionPane.showMessageDialog(null, "Logo no encontrado. Verifica la ruta: src/Img/LogoTL.jpg");
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if (rs != null) rs.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Excel.class.getName()).log(Level.WARNING, "Error al cerrar ResultSet", ex);
-            }
-            try {
                 if (ps != null) ps.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Excel.class.getName()).log(Level.WARNING, "Error al cerrar PreparedStatement", ex);
-            }
-            try {
                 if (con != null) con.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Excel.class.getName()).log(Level.WARNING, "Error al cerrar Connection", ex);
+                Logger.getLogger(Excel.class.getName()).log(Level.WARNING, "Error al cerrar recursos", ex);
             }
         }
     }

@@ -6,7 +6,10 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *
+ * @author LUIS
+ */
 public class ProductoDao {
     private final Conexion cn = new Conexion();
     private Connection con;

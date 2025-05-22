@@ -3,14 +3,20 @@ package Reportes;
 import Modelo.VentaDao;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import org.apache.commons.compress.utils.IOUtils;
 
 import javax.swing.*;
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ *
+ * @author LUIS
+ */
 public class PDF {
 
     public void generarFacturaPdf(int idVenta, JTable tableVenta,
@@ -36,7 +42,12 @@ public class PDF {
             doc.open();
 
             // Logo
-            Image img = Image.getInstance("src/img/logo_pdf.png");
+            // Logo desde recurso
+            InputStream is = getClass().getResourceAsStream("/Img/LogoTL.jpg");
+            if (is == null) {
+                throw new FileNotFoundException("No se encontró el logo en: /Img/LogoTL.jpg");
+            }
+            Image img = Image.getInstance(IOUtils.toByteArray(is));
             img.scaleToFit(80, 80);
             img.setAlignment(Element.ALIGN_LEFT);
 

@@ -5,7 +5,10 @@ import Util.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ *
+ * @author LUIS
+ */
 public class DetalleDao {
     private final Conexion cn = new Conexion();
     public boolean registrarDetalle(Detalle detalle) {

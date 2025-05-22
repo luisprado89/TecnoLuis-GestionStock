@@ -3,7 +3,10 @@ package Modelo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *
+ * @author LUIS
+ */
 public class EmpresaDao {
 
     // Método para obtener la conexión a la base de datos

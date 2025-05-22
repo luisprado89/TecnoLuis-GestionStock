@@ -1,7 +1,10 @@
 package Util;
 
 import javax.swing.text.*;
-
+/**
+ *
+ * @author LUIS
+ */
 public class LimiteCaracteres extends DocumentFilter {
     private int limiteMax;
     private int limiteMin;

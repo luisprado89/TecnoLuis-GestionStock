@@ -24,14 +24,14 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
+        jLabel4.setText("<html><div style='text-align:center;'>Sistema de Gestión de Inventario<br><span style='font-size:12px;'>Control eficiente y preciso de tu stock</span></div></html>");
 
         jProgressBar1Login.setForeground(new Color(0x58BC67)); // Verde #58BC67
         jProgressBar1Login.setStringPainted(true);             // Mostrar el texto del progreso
         jProgressBar1Login.setVisible(false);                  // Oculto hasta que inicie
 
 
-
-        // ✅ Redimensionar automáticamente la imagen que ya se asignó en el diseñador
+        //  Redimensionar automáticamente la imagen que ya se asignó en el diseñador
         SwingUtilities.invokeLater(() -> {
             ImageIcon iconoOriginal = (ImageIcon) jLabelLogoInicio.getIcon();
             jLabelLogoInicio.setIcon(
@@ -79,7 +79,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Correo Electrónico");
 
         jLabelLogoInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLogoInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/datos-del-usuario.png"))); // NOI18N
+        jLabelLogoInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/login1001.png"))); // NOI18N
         jLabelLogoInicio.setAutoscrolls(true);
         jLabelLogoInicio.setMaximumSize(new java.awt.Dimension(50, 50));
         jLabelLogoInicio.setMinimumSize(new java.awt.Dimension(50, 50));
@@ -103,6 +103,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        btnAcceder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAcceder.setForeground(new java.awt.Color(0, 153, 51));
         btnAcceder.setText("Acceder");
         btnAcceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +135,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jPasswordLogin)
                             .addComponent(btnAcceder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jProgressBar1Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +159,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 360, 590));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 300, 590));
 
         jPanel1.setBackground(new java.awt.Color(1, 150, 32));
 
@@ -166,7 +168,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Sistema de Gestión de Inventario");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,28 +177,28 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(122, Short.MAX_VALUE))
+                        .addGap(91, 91, 91)
+                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(186, 186, 186))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(54, 54, 54)
                 .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 670));
 
         Fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Portada2340.png"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, -1, -1));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 340, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

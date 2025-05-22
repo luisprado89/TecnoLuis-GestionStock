@@ -2,7 +2,10 @@ package Modelo;
 
 
 import java.time.LocalDateTime;
-
+/**
+ *
+ * @author LUIS
+ */
 public class Cliente {
     private int id;
     private String dni;
