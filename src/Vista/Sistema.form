@@ -257,7 +257,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="260" y="0" width="930" height="90"/>
+          <AbsoluteConstraints x="260" y="0" width="920" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -363,7 +363,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="jLabelTituloNuevaVEnta" min="-2" pref="432" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -679,7 +679,7 @@
                                                           <Component id="btnGuardarUsuario" min="-2" pref="68" max="-2" attributes="0"/>
                                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                               <Component id="jLabel37" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jLabel32" alignment="0" pref="85" max="32767" attributes="0"/>
+                                                              <Component id="jLabel32" alignment="0" max="32767" attributes="0"/>
                                                           </Group>
                                                           <Component id="btnEliminarUsuario" min="-2" pref="68" max="-2" attributes="0"/>
                                                       </Group>
@@ -1277,7 +1277,7 @@
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel15" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel17" alignment="0" pref="71" max="32767" attributes="0"/>
+                                      <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel18" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
@@ -2231,7 +2231,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="800" y="80" width="60" height="50"/>
+          <AbsoluteConstraints x="710" y="80" width="60" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -2241,7 +2241,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="890" y="100" width="250" height="-1"/>
+          <AbsoluteConstraints x="780" y="100" width="250" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -2251,19 +2251,24 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="890" y="70" width="-1" height="-1"/>
+          <AbsoluteConstraints x="780" y="80" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblReloj">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Consolas" size="15" style="1"/>
-        </Property>
-      </Properties>
+    <Component class="botoncerrarsesion.BotonCerrarSesion" name="botonCerrarSesion1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCerrarSesion1ActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="330" y="110" width="400" height="-1"/>
+          <AbsoluteConstraints x="1080" y="90" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="relojpersonalizado.RelojPersonalizado" name="relojPersonalizado1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="290" y="80" width="350" height="50"/>
         </Constraint>
       </Constraints>
     </Component>

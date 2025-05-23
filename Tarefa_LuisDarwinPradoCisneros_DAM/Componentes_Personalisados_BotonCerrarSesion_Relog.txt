@@ -1,0 +1,2 @@
+Componentes personalizados creados, el reloj  con la fecha y el botón para cerrar sesión.
+Cada uno tiene un ToolTipText con un mensaje indicándolo.

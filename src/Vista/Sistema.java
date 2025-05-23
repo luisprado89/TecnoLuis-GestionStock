@@ -5,7 +5,6 @@ import Reportes.Excel;
 import Reportes.Grafico;
 import Reportes.PDF;
 import Util.Conexion;
-import Util.RelojDigital;
 import Util.UtilImagenes;
 
 import javax.swing.*;
@@ -53,9 +52,7 @@ public class Sistema extends javax.swing.JFrame {
     public Sistema(String nombreUsuario, String rolUsuario) {
         initComponents();
         this.setLocationRelativeTo(null);
-        
-        //Reloj componente personalizado
-        RelojDigital reloj = new RelojDigital(lblReloj);
+
 
 
         this.usuarioNombre = nombreUsuario;
@@ -286,7 +283,8 @@ public class Sistema extends javax.swing.JFrame {
         btnGrafical = new javax.swing.JButton();
         miDateJCalendar = new com.toedter.calendar.JDateChooser();
         jLabel31 = new javax.swing.JLabel();
-        lblReloj = new javax.swing.JLabel();
+        botonCerrarSesion1 = new botoncerrarsesion.BotonCerrarSesion();
+        relojPersonalizado1 = new relojpersonalizado.RelojPersonalizado();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
@@ -414,7 +412,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabelCabecera.setBackground(new java.awt.Color(130, 205, 141));
         jLabelCabecera.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabelCabecera.setText("TecnoLuis - Sistema de Gestión Empresarial");
-        getContentPane().add(jLabelCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 930, 90));
+        getContentPane().add(jLabelCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 920, 70));
 
         jTabbedPane1.setBackground(new java.awt.Color(88, 188, 103));
         jTabbedPane1.setBorder(new javax.swing.border.MatteBorder(null));
@@ -570,7 +568,7 @@ public class Sistema extends javax.swing.JFrame {
             .addGroup(panelNuevaVentaLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabelTituloNuevaVEnta, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelNuevaVentaLayout.setVerticalGroup(
             panelNuevaVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -721,7 +719,7 @@ public class Sistema extends javax.swing.JFrame {
                                                     .addComponent(btnGuardarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                         .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                                                        .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                     .addComponent(btnEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1058,7 +1056,7 @@ public class Sistema extends javax.swing.JFrame {
                             .addGroup(panelProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(5, 5, 5)
@@ -1506,16 +1504,21 @@ public class Sistema extends javax.swing.JFrame {
                 btnGraficalActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGrafical, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 60, 50));
+        getContentPane().add(btnGrafical, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 60, 50));
 
         miDateJCalendar.setToolTipText("Selecciona una fecha");
-        getContentPane().add(miDateJCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 100, 250, -1));
+        getContentPane().add(miDateJCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 100, 250, -1));
 
         jLabel31.setText("Seleccionar:");
-        getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 70, -1, -1));
+        getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, -1, -1));
 
-        lblReloj.setFont(new java.awt.Font("Consolas", 1, 15)); // NOI18N
-        getContentPane().add(lblReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 400, -1));
+        botonCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCerrarSesion1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonCerrarSesion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 90, -1, -1));
+        getContentPane().add(relojPersonalizado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 350, 50));
 
         jMenu1.setText("Inicio");
 
@@ -2911,6 +2914,16 @@ public class Sistema extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jMenuItemAnalisisInicialActionPerformed
+
+    private void botonCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesion1ActionPerformed
+        // Cerrar la ventana actual (Sistema)
+        this.dispose();
+
+        // Abrir la ventana de Login
+        Login login = new Login();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
+    }//GEN-LAST:event_botonCerrarSesion1ActionPerformed
     //Metodo para limpiar los campos de usuarios
     private void limpiarCamposUsuarios() {
         txtIDUsuario.setText("");
@@ -3018,6 +3031,7 @@ public class Sistema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private botoncerrarsesion.BotonCerrarSesion botonCerrarSesion1;
     private javax.swing.JButton btnActualizarEmpresa;
     private javax.swing.JButton btnConfiguracion;
     private javax.swing.JButton btnEditarCliente;
@@ -3108,7 +3122,6 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelTotalVenta;
-    private javax.swing.JLabel lblReloj;
     private com.toedter.calendar.JDateChooser miDateJCalendar;
     private javax.swing.JPanel panelClientes;
     private javax.swing.JPanel panelConfiguracion;
@@ -3117,6 +3130,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JPanel panelProveedores;
     private javax.swing.JPanel panelUsuarios;
     private javax.swing.JPanel panelVentas;
+    private relojpersonalizado.RelojPersonalizado relojPersonalizado1;
     private javax.swing.JTable tableCliente;
     private javax.swing.JTable tableProducto;
     private javax.swing.JTable tableProveedor;

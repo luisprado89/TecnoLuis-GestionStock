@@ -1,3 +1,13 @@
 El usuario que puedes usar para abrir el programa es:
 Correo: admin
 Contraseña: admin
+
+se puede usar cualquiera de estos usuarios con su correo y contraseña que también están en la base de datos.
+
+INSERT INTO usuarios (nombre, correo, pass, rol) VALUES
+('admin', 'admin', 'admin', 'Administrador'),
+('Luis Fernández', 'luis@admin.com', 'admin123', 'Administrador'),
+('Carmen Ruiz', 'carmen@admin.com', 'admin456', 'Administrador'),
+('Pedro Martínez', 'pedro@admin.com', 'admin789', 'Vendedor'),
+('Lucía Gómez', 'lucia@admin.com', 'admin321', 'Vendedor'),
+('Javier Ortega', 'javier@admin.com', 'admin654', 'Administrador');
